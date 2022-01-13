@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    box-sizing:border-box;
+	font-family: 'Barlow', sans-serif;
+}
+
+/* Body Styling */
+
+body {
+	background-color:rgba(19, 18, 18, 0.9);
+	background-size: 400% 400%;
+	height: 100vh;
+}
+
+/* Navigation Bar Styling */
+/* 
+.nav-bar{
+    position:fixed;
+    width:100%;
+    background-color: rgb(0, 0, 0);
+    z-index: 5;
+    padding: 15px 0;
+    padding-top: 0;
+    backdrop-filter: blur(7px);
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+
+}
+
+.nav-bar .maximum-width {
+    display:flex;
+    align-items:flex-end;
+    
+}
+
+.maximum-width{
+    max-width: 1300px;
+    margin:auto;
+    padding:0 40px;
+}
+
+
+.logo{
+    padding-top: 13px;
+	flex:2;
+
+}
+
+.logo-img{
+    height:60px;
+    width: 180px;
+	cursor:pointer;	
+}
+
+
+
+.nav-bar .navigation li{
+    display: inline-block;
+    list-style: none;
+
+}
+
+.nav-bar .navigation li .nav-links{
+    color:rgb(243, 243, 243);
+    font-size: 18px;
+    margin-left: 25px;
+    font-family: 'play' ,sans-serif;
+    transition:color 0.3s ease;
+	transition-duration: 0.4s;
+}
+
+.nav-bar .navigation li a:hover{
+	color: rgb(85, 187, 235);
+	transform: scale(1.1);
+} */
+
+/* Styling Navigation Buttons */
+/* .nav-button{
+	border-radius: 12px;
+	box-shadow: 2px 2px 2px rgb(177, 177, 177);
+	border-color: rgb(85, 187, 235);
+	color: black;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bolder;
+	margin: 4px 2px;
+	padding:5px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.nav-button:hover {
+	background-color: #ffffff;
+	color: rgb(85, 187, 235);
+	transform: scale(1.2);
+}
+
+.sign-links {
+    color: black;
+} */
+
+
+/* Search Tool Styling */
+/* .search-box{
+	height: 45px;
+	padding: 7px;
+	border-radius: 40px;
+	padding:10px;
+	margin-top:10px;
+	
+}
+
+.search-input {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    font-size: 16px;
+    transition: 0.4s;	
+    width: 0px;
+	margin-top: 7px;
+	border-radius: 16px;
+	background-color: white;
+
+}
+
+.search-button {
+    color: white;
+    width: 35px;
+    height: 35px;
+	border-color:  rgb(85, 187, 235);
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+	margin-left: 25px;
+	
+}
+
+.search-box:hover > .search-input {
+    width: 180px;
+    padding: 0 6px;
+}
+
+
+.search-box:hover > .search-button {
+	background: white;
+	color : #2f3640;
+  } */
+  
+
+/* Anagnorisi Shortcut Styling */
+
+.main-content{
+    width: 100%;
+}
+
+.shortcuts-1{
+    width:100%;
+    height:75vh;
+    background-color: rosybrown;
+    display: flex;
+
+
+}
+
+.anagnwrish{
+    height: inherit;
+    width: 80%;
+    background-color:rgb(179, 179, 179);
+    position: relative;
+    border-radius: 6px;
+    
+}
+.anagnwrish:hover{
+    background-color:rgb(201, 200, 200);
+
+}
+
+.efarmogh{
+    padding-top: 5vh;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 8vh;
+    padding-left: 8vh;
+
+
+}
+
+.anagnwrish-info{
+    padding-top: 5vh;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 8vh;
+    padding-left: 8vh;
+    
+}
+
+.learn-more{
+    display: inline - block;
+    border-radius: 8px;
+	box-shadow: 2px 2px 2px rgb(177, 177, 177);
+	border-color: rgb(85, 187, 235);
+	color:rgb(0, 0, 0);
+	text-align: center;
+	font-weight: normal;
+	margin: 8px 6px;
+	padding:8px;
+    font-size: 20px;
+    font-family: 'Play',sans-serif;
+	transition-duration: 0.4s;
+	cursor: pointer;
+    background-color: rgb(179, 179, 179);
+    margin: 2vh;
+   
+    
+
+}
+
+.learn-more:hover{
+
+    transform: scale(1.2);
+}
+
+.e-doatap-btn{
+    border-radius: 12px;
+	box-shadow: 2px 2px 2px rgb(177, 177, 177);
+	border-color: rgb(85, 187, 235);
+	color:lightgray;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bolder;
+	margin: 6px 2px;
+	padding:5px;
+    font-size: 24px;
+	transition-duration: 0.4s;
+    margin-top: 3vh;
+	cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    display: inline-block;
+    margin: 3vh;
+}
+
+.e-doatap-btn:hover{
+    transform: scale(1.2);
+}
+
+
+.logo-btn{
+    height:50px;
+    width: 150px;
+
+}
+
+.anagnwrish-title{
+    font-size: 28px;
+    font-weight: bolder;
+    font-style: oblique;
+    padding-top: 18vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    text-align:center;
+    font-family: 'Play', sans-serif;
+}
+
+.anakoinwseis-title{
+    font-size: 20px;
+    font-weight: normal;
+    font-style:italic;
+    color:rgb(85, 187, 235);
+    padding-top: 15vh;
+    padding-left: 8vh;
+    padding-right: 8vh;
+    text-align:center;
+    font-family: 'Play', sans-serif;
+  
+}
+
+.anakoinwseis{
+    height: inherit;
+    width: 20%;
+    background-color: rgb(14, 19, 10);
+    border-radius: 12px;
+
+}
+
+
+.anakoinwsh{
+    margin:1vh;
+    border-width: 2px;
+    border-top-color: rgb(85, 187, 235);
+    border-top:rgb(85, 187, 235) ;
+    border-left:none;
+    border-right:none;  
+    height: 16vh;
+    width: 40vh;
+    border-bottom-color: rgb(85, 187, 235);
+    color: ivory;
+    border-radius: 12px;
+    padding-top: 10px;
+}
+
+.anakoinwsh:hover{
+    cursor: pointer;
+    background-color:rgb(43, 43, 43);
+}
+
+
+
+.anakoinwsh-titlos{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 4px;
+    font-family: 'Play',sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.anakoinwsh-info{
+    padding:4px;
+}
+
+
+
+/* ---- Dividers --- */
+
+.divider
+{
+	position: relative;
+	margin-top: 25px;
+	height: 1px;
+}
+
+.blue{
+    margin-top: 8px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+
+.div-transparent-blue:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 2px;
+    background-image: linear-gradient(to right, transparent, rgb(85, 187, 235), transparent);
+}
+
+.div-arrow-down:after
+{
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: -7px;
+	left: calc(50% - 7px);
+	width: 14px;
+	height: 14px;
+	transform: rotate(45deg);
+    background-color:rgb(179, 179, 179); 
+	border-bottom: 1px solid rgb(48,49,51);
+	border-right: 1px solid rgb(48,49,51);
+}
+
+
+
+
+/* -------------- ShortCuts -2 ---------------------- */
+.shortcuts-2{
+    display:flex;
+    width:100%;
+    height: 50vh;
+    background-color:rgb(179, 179, 179);
+    padding:2%;
+}
+
+.sub-shortcut{
+    margin:2%;
+    border-radius: 8px;
+    width:30%;
+    height:40vh;
+    background-color:inherit;
+    border-style:solid;
+    border-width: 2px;
+    border-top:none;
+    border-left-color: black;
+    border-right-color: black;  
+    border-bottom:none;
+}
+
+.sub-shortcut:hover{
+    transform:scale(1.1);
+    cursor: pointer;    
+}
+
+.sub-shortcut-title{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.sub-shortcut-info{
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    
+}
+
+
+/* ---- footer --- */
+
+.footer{
+    height: 40vh;
+    width:100%;
+    background-color: black;
+    display:flex;
+}
+
+.Sub-footer-container{
+    width:50%;
+    padding:10vh;
+    color:blanchedalmond;
+}
+
+.Sub-footer-title{
+
+    font-size: 24px;;
+}
+
+
+/* alert */
+.alert-primary {
+	color: green;
+	background-color: #69beff;
+	border-color: #54b5ff;
+}
+
+.alert-primary hr {
+	border-top-color: #3baaff;
+}
+
+.alert-primary .alert-link {
+	color: lightgray;
+}
+
+.alert .alert-success {
+    color: green;
+	background-color: #69beff;
+	border-color: #54b5ff;
+}

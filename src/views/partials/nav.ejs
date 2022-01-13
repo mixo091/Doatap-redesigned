@@ -1,0 +1,35 @@
+<nav class="nav-bar">
+    <div class="logo"><img class="logo-img" src="images/Logo-En-Color-white.png" alt="logo"></div>
+    <div class="navigation" id="nav-menu">
+        <ion-icon name="close-outline" class="nav-bar__close" id="close-menu"></ion-icon>
+        <ul class="nav-list " id="nav-list">
+            <li class="nav-item"><a class="nav-link" href="/"> eDoatap </a></li>
+            <li class="nav-item"><a class="nav-link" href="/about"> Πληροφορίες </a></li>
+            <li class="nav-item"><a class="nav-link" href="/ypiresies"> Υπηρεσίες </a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact"> Επικοινωνία</a></li>
+            <li class="nav-item">
+                <div class="search-box">
+                    <input class="search-input" type="text" name="" placeholder="Search...">
+                    <button class="search-button" href="#">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <% if(!currentUser) { %>
+                        <button class="nav-button sign-up"><a class="nav-sign" href="/register">Εγγραφή</a>
+                        </button>
+                        <button class="nav-button sign-up"><a class="sign-links" href="/login">Είσοδος</a>
+                        </button>
+                        <% } else { %>
+                            <button class="nav-button sign-out">
+                                <a class="sign-links" href="/logout">Αποσύνδεση</a>
+                            </button>
+                            <% } %>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ion-icon name="menu-outline" class="nav-bar__toggle" id="toggle-menu"></ion-icon>
+</nav>
