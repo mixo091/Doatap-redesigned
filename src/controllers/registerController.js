@@ -1,5 +1,5 @@
 const registerService = require('../services/registerService');
-const validationResult = require('express-validator');
+const {validationResult} = require('express-validator');
 
 let getPageRegister = (req, res) => {
     req.breadcrumbs({

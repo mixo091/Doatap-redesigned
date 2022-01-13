@@ -42,9 +42,8 @@ app.set('view engine', 'ejs');
 app.use((request, response, next) => {
     response.locals.loggedin = request.session.loggedin
     response.locals.currentUser = request.session.currentUser
-    // response.locals.warning = request.flash("warning")
-    // response.locals.danger = request.flash("danger")
     response.locals.success = request.flash("success")
+    response.locals.success = request.flash("errors")
     response.locals.breadcrumbs = request.breadcrumbs()
     next()
 })

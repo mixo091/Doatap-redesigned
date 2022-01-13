@@ -16,16 +16,35 @@ let getUserProfile = (req, res) => {
     }
 };
 
+let getNewRequestPage = (req, res) => {
+    if(req.session.loggedin) {
+        req.breadcrumbs([{
+            name: 'Προφίλ',
+            url: '/account'
+        }, {
+            name: 'Νέα Αίτηση',
+            url: '/account/nea_aitisi'
+        }])
+        return res.render('users/request', {
+            user: req.session.currentUser
+        })
+    } else {
+        req.flash('errors', 'Απαγορεύεται η πρόσβαση')
+        res.redirect('/login')
+    }
+};
+
+
+
 let getUserInfo = (req, res) => {
     if(req.session.loggedin) {
-        req.breadcrumbs({
+        req.breadcrumbs([{
             name: 'Προφίλ',
             url: '/account'
         }, {
             name: 'Επεξεργασία προφίλ',
             url: '/account/edit'
-        }
-        )
+        }])
         return res.render('users/edit', {
             user: req.session.currentUser
         })
@@ -83,5 +102,6 @@ let updateUserInfo = async(req,res) => {
 module.exports = {
     getUserProfile: getUserProfile,
     getUserInfo: getUserInfo,
-    updateUserInfo: updateUserInfo
+    updateUserInfo: updateUserInfo,
+    getNewRequestPage: getNewRequestPage
 }

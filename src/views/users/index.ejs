@@ -1,43 +1,125 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <%- include ('../partials/header.ejs') %>
 </head>
+
 <body>
     <%- include ('../partials/nav.ejs') %>
-    <%- include ('../partials/breadcrumbs.ejs') %>
+        <%- include ('../partials/breadcrumbs.ejs') %>
 
-        <div class="container top-padding bottom-padding">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title mb-4">
-                                <div class="d-flex justify-content-start">
-                                    <div class="image-container">
-                                        <i class="bi bi-file-person-fill"></i>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="180" height="160"
-                                            fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
-                                        </svg>
+            <div class="container top-padding bottom-padding">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title mb-4">
+                                    <div class="d-flex justify-content-start">
+                                        <div class="image-container">
+                                            <i class="bi bi-file-person-fill"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="180" height="160"
+                                                fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
+                                            </svg>
+                                        </div>
+                                        <div class="userData ml-3">
+                                            <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Προφίλ</h2>
+                                        </div>
                                     </div>
-                                    <div class="userData ml-3">
-                                        <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Προφίλ</h2>
-                                    </div>
-                                </div>
-                                <!-- <a class="btn btn-outline-primary" href="/account/edit">Επεξεργασία <i
+                                    <!-- <a class="btn btn-outline-primary" href="/account/edit">Επεξεργασία <i
                                     class="fas fa-user-edit"></i></a>
                             <a class="btn btn-outline-primary" href="/account/edit/pwd">Αλλαγή
                                 Κωδικού <i class="fas fa-key"></i></a> -->
-                                
-                            </div>
-                            <div class="row">
+                                </div>
+                                <div class="m-4">
+                                    <ul class="nav nav-pills" id="myTab">
+                                        <li class="nav-item">
+                                            <a href="#info" class="nav-link active">Βασικές Πληροφορίες</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#profile" class="nav-link">Αιτήσεις</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#messages" class="nav-link">Μηνύματα</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="home">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Όνομα</label>
+                                                </div>
+                                                <div class="col-md-8 col-6">
+                                                    <%= user.first_name %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Επώνυμο</label>
+                                                </div>
+                                                <div class="col-md-8 col-6">
+                                                    <%= user.last_name %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Τηλέφωνο</label>
+                                                </div>
+                                                <div class="col-md-8 col-6">
+                                                    <%= user.phone %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Email</label>
+                                                </div>
+                                                <div class="col-md-8 col-6">
+                                                    <%= user.email %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <a class="btn btn-outline-primary" href="/account/edit">Επεξεργασία <i
+                                                    class="fas fa-user-edit"></i></a>
+                                            <a class="btn btn-outline-primary" href="/account/edit/pwd">Αλλαγή
+                                                Κωδικού <i class="fas fa-key"></i></a>
+                                            <a class="btn btn-outline-danger" href="/<%= user.id %>">Διαγραφή
+                                                Λογαριασμού <i class="fas fa-key"></i></a>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile">
+                                            <h4 class="mt-2">Profile tab content</h4>
+                                            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh
+                                                urna, ornare id gravida ut, mollis a magna. Aliquam porttitor
+                                                condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum
+                                                turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed
+                                                consequat ante in rutrum convallis. Nunc facilisis leo at faucibus
+                                                adipiscing.</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="messages">
+                                            <h4 class="mt-2">Messages tab content</h4>
+                                            <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum
+                                                sem a, hendrerit velit. Donec at erat magna. Sed dignissim orci nec
+                                                eleifend egestas. Donec eget mi consequat massa vestibulum laoreet.
+                                                Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem.
+                                                Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus
+                                                et magnis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
                                 <div class="col-12">
                                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" role="tab"
                                                 aria-controls="basicInfo" aria-selected="true">Βασικές Πληροφορίες</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" role="tab"
+                                                aria-controls="basicInfo" aria-selected="true" href="/account/aitiseis">Αιτήσεις</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content ml-1" id="myTabContent">
@@ -88,15 +170,27 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="js/nav-script.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var tabList = [].slice.call(document.querySelectorAll("#myTab a"));
+                    tabList.forEach(function (tab) {
+                        var tabTrigger = new bootstrap.Tab(tab);
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/nav-script.js" ></script>
+                        tab.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            tabTrigger.show();
+                        });
+                    });
+                });
+            </script>
 </body>
 
 </html>
