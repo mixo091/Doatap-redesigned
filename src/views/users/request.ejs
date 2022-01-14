@@ -10,5 +10,27 @@
     <!-- <%- include ('../partials/nav.ejs') %> -->
     <%- include ('../partials/breadcrumbs.ejs') %>
     Welcome <%= currentUser.first_name %>
+
+    <form action="request?_method=POST" method="POST" class="row g-3">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Χώρα</label>
+          <input type="text" name="country" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Πανεπιστήμια</label>
+          <input type="text" name="university" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Τίτλος Πτυχίου</label>
+          <input type="text" name="certificate" class="form-control" id="inputAddress">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Αναγνώριση Τίτλου</label>
+          <input type="text" name="recognition" class="form-control" id="inputAddress2">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Ολοκλήρωση Αίτησης</button>
+        </div>
+      </form>
 </body>
 </html>

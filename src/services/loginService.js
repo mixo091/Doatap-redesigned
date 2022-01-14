@@ -44,7 +44,7 @@ let findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try {
             DBConnection.query(
-                ' SELECT * FROM user WHERE id = ?  ', id,
+                ' SELECT * FROM user WHERE user_id = ?  ', id,
                 function(err, rows) {
                     if (err) {
                         reject(err)

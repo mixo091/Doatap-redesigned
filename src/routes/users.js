@@ -6,8 +6,12 @@ const userController = require('../controllers/userController');
 
 router.get('/', userController.getUserProfile)
 router.get('/edit', userController.getUserInfo)
-router.get('/nea_aitisi', userController.getNewRequestPage)
+router.get('/request', userController.getNewRequestPage)
+router.get('/user-requests', userController.getAllRequests)
+
+router.post('/request', userController.createNewRequest)
 
 router.put('/edit', userController.updateUserInfo)
+
 
 module.exports = router;
