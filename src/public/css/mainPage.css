@@ -12,11 +12,7 @@
 
 /* Body Styling */
 
-body {
-	background-color:rgba(19, 18, 18, 0.9);
-	background-size: 400% 400%;
-	height: 100vh;
-}
+
 
 /* Navigation Bar Styling */
 /* 
@@ -432,25 +428,7 @@ body {
 }
 
 
-/* ---- footer --- */
 
-.footer{
-    height: 40vh;
-    width:100%;
-    background-color: black;
-    display:flex;
-}
-
-.Sub-footer-container{
-    width:50%;
-    padding:10vh;
-    color:blanchedalmond;
-}
-
-.Sub-footer-title{
-
-    font-size: 24px;;
-}
 
 
 /* alert */

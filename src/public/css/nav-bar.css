@@ -29,23 +29,41 @@
 
 /* --------------------- Navigation Styling  --------------------- */
 .nav-bar{
-    background-color : black;
     display : flex;
     justify-content: space-around;
     padding: 1rem 0;
     align-items: center ;
     position:fixed;
     width:100%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(38, 38, 41);
     z-index: 5;
     padding: 15px 0;
     padding-top: 0;
     backdrop-filter: blur(7px);
+    border-radius: 6px;
     box-shadow: 5px 5px 5px rgb(0, 0, 0);
 
 }
 
-.nav-bar-toggle,.nav-bar-close{
+.nav-bar__toggle,.nav-bar__close{
+    background-color: aquamarine;
+}
+
+.nav-bar__toggle{
+    height: 30vh;
+    width: 400cm;
+    color:red;
+}
+
+.bars{
+    color:red;
+}
+
+
+#toggle-menu{
+    display: none;
+}
+#close-menu{
     display: none;
 }
 
@@ -78,7 +96,7 @@
 	border-radius: 6px;
 	box-shadow: 2px 2px 2px rgb(177, 177, 177);
 	border-color: rgb(81, 159, 196);
-	color: black;
+	color: rgb(53, 53, 53);
     font-family: 'Play' , sans-serif ;
 	text-align: center;
 	font-size: 14px;
@@ -126,6 +144,58 @@
 
 
 
+.dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: red;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .show1 {
+    display: block;
+  }
+
+  .mpla{
+      background-color: burlywood;
+  }
+
+
 /* Responsive nav-bar */
 
 @media screen and (max-width:1000px){
@@ -137,32 +207,37 @@
        
     }
 
-    
-    .nav-bar__toggle{
+
+    /* --- Menu Buttons Styling --- */
+
+    #toggle-menu{
         display: inline;
         font-size: 24px;
         color: white;
+        padding: 3px;
         border-radius: 50%;
     }
 
-    .nav-bar__close{
+    #close-menu{
         position:absolute;
         display: block;
         font-size: 24px;
         right: 24px ;
         border-radius: 50%;
-        color:white
+        color:white;
+        padding:3px;
     }
 
-    .nav-bar__close:hover{
+    #close-menu:hover{
         background-color: rgb(85, 187, 235);
 
     }
 
-    .nav-bar__toggle:hover{
+    #toggle-menu:hover{
         background-color: rgb(85, 187, 235);
-
     }
+
+    /* ------------------------------------ */
 
 
     .navigation{

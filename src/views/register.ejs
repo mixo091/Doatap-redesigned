@@ -7,12 +7,12 @@
 <%- include ('partials/nav.ejs') %>
 <%- include ('partials/breadcrumbs.ejs') %>
 
-<div class="container">
-    <div class="container">
+<div class="container1">
+    <div class="container1" class="reg-div">
         <div class="row mt-5">
             <div class="col-7 login-left">
             </div>
-            <div class="col-5 mt-2">
+            <div class="col-5 mt-2" class = "login-content" class="reg-div">
                 <div>
                     <% if(errors != "") { %>
                         <% errors.forEach((item) => { %>
@@ -22,28 +22,30 @@
                         <% }); %>
                     <% } %>
                 </div>
+                
                 <form method="POST" action="/register">
-                    <div class="form-group">
+                    <h2 class="register">Eγγραφή</h2>
+                    <div class="input-div" class="form-group">
                         <label for="first_name">Όνομα:</label>
-                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name">
+                        <input type="text" class="form-control" class="input" name="first_name" id="first_name" placeholder="first name">
                     </div>
-                    <div class="form-group">
+                    <div class="input-div" class="form-group">
                         <label for="last_name">Επίθετο:</label>
                         <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name">
                     </div>
-                    <div class="form-group">
+                    <div class="input-div" class="form-group">
                         <label for="phone">Τηλέφωνο:</label>
                         <input type="text" class="form-control" name="phone" id="phone" placeholder="Τηλέφωνο">
                     </div>
-                    <div class="form-group">
+                    <div class="input-div" class="form-group">
                         <label for="email">Email address: (*)</label>
                         <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
                     </div>
-                    <div class="form-group">
+                    <div class="input-div" class="form-group">
                         <label for="password">Password: (*)</label>
                         <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
+                    <div  class="input-div" class="form-group">
                         <label for="passwordConfirmation">Confirm password: (*)</label>
                         <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
                     </div>
@@ -58,15 +60,11 @@
                     Return to <a href="/">Home Page</a>
                 </div>
                 <br><br>
-                <!-- <div>
-                    View full tutorial on Youtube. <a target="_blank"
-                                                      href="https://www.youtube.com/channel/UCHqJxLo7mKam9GKqqwr2wfA/playlists">Click
-                        here</a>
-                </div> -->
             </div>
         </div>
     </div>
 </div>
-<script src="js/nav-script.js" ></script>
+<%- include ('partials/footer.ejs') %>
+
 </body>
 </html>
