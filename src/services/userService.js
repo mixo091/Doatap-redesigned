@@ -19,7 +19,10 @@ let createNewRequest = (data) => {
             function(err, rows) {
                 if (err) {
                     reject(false)
+                    console.log("Error")
+
                 }
+                console.log("ok")
                 resolve("Create a new request successful");
                 console.log(rows)
             }
