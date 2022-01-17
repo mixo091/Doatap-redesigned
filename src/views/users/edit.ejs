@@ -13,13 +13,13 @@
         </div>
         <% } %>
     </div>
-    <%- include ('../partials/nav.ejs') %>
+    <%- include ('../partials/nav-bar.ejs') %>
     <%- include ('../partials/breadcrumbs.ejs') %>
 
         <div class="row top-padding bottom-padding">
             <div style="width: 30%; margin: 25px auto;">
-                <h1 style="text-align: center">Επεξεργασία Δεδομένων</h1>
-                <form action="/account/edit?_method=PUT" method="post"
+                <h1 style="text-align: center ; font-family: 'Play' , sans-serif ; font-size: larger; color: white; margin-bottom: 5vh; ">Επεξεργασία Δεδομένων</h1>
+                <form action="/account/edit?_method=PUT" method="post" style="margin-bottom: 5vh;"
                     oninput='passwordConfirm.setCustomValidity(passwordConfirm.value != password.value ? "Passwords do not match." : "")'>
                     <div class="form-group">
                         <label for="input_first_name">Όνομα</label>
@@ -42,7 +42,7 @@
                             placeholder="john@doe.com" value="<%= currentUser.email %>" required>
                     </div>
 
-                    <hr class="my-4">
+                    <hr class="my-4" style="background-color:white">
 
                     <div class="form-group">
                         <label for="input_email">Κωδικός πρόσβασης</label>
@@ -54,10 +54,11 @@
                         <input type="password" class="form-control" id="input_password_confirm"
                             name="passwordConfirm" placeholder="Κωδικός πρόσβασης" required>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block">Αλλαγή Δεδομένων</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block " style = " font-family: 'Play' , sans-serif ; font-size: large">Αλλαγή Δεδομένων</button>
                 </form>
             </div>
         </div>
         <script src="js/nav-script.js" ></script>
+        <%- include ('../partials/footer.ejs') %>
 </body>
 </html>

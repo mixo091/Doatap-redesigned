@@ -4,66 +4,57 @@
     <%- include ('partials/header.ejs') %>
 </head>
 <body>
-<%- include ('partials/nav.ejs') %>
+<%- include ('partials/nav-bar.ejs') %>
 <%- include ('partials/breadcrumbs.ejs') %>
+<link rel="stylesheet" href="/css/register.css">
 
-<div class="container1">
-    <div class="container1" class="reg-div">
-        <div class="row mt-5">
-            <div class="col-7 login-left">
-            </div>
-            <div class="col-5 mt-2" class = "login-content" class="reg-div">
-                <div>
-                    <% if(errors != "") { %>
-                        <% errors.forEach((item) => { %>
-                            <div class="alert alert-danger">
-                                <%- item %>
-                            </div>
-                        <% }); %>
-                    <% } %>
-                </div>
-                
-                <form method="POST" action="/register">
-                    <h2 class="register">Eγγραφή</h2>
-                    <div class="input-div" class="form-group">
-                        <label for="first_name">Όνομα:</label>
-                        <input type="text" class="form-control" class="input" name="first_name" id="first_name" placeholder="first name">
-                    </div>
-                    <div class="input-div" class="form-group">
-                        <label for="last_name">Επίθετο:</label>
-                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name">
-                    </div>
-                    <div class="input-div" class="form-group">
-                        <label for="phone">Τηλέφωνο:</label>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Τηλέφωνο">
-                    </div>
-                    <div class="input-div" class="form-group">
-                        <label for="email">Email address: (*)</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
-                    </div>
-                    <div class="input-div" class="form-group">
-                        <label for="password">Password: (*)</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-                    </div>
-                    <div  class="input-div" class="form-group">
-                        <label for="passwordConfirmation">Confirm password: (*)</label>
-                        <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
-
-                <hr>
-                <div>
-                    If you already have had an account. <a href="/login">Log in</a>.
-                </div>
-                <div>
-                    Return to <a href="/">Home Page</a>
-                </div>
-                <br><br>
-            </div>
-        </div>
+<div class="wrapper">
+    <div class="title">
+        Φορμα Εγγραφης
     </div>
+    <% if(errors != "") { %>
+        <% errors.forEach((item) => { %>
+            <div class="alert alert-danger">
+                <%- item %>
+            </div>
+        <% }); %>
+    <% } %>
+    <form class="form" method="POST" action="/register">
+
+       <div class="inputfield">
+        <label for="first_name">Όνομα:</label>
+        <input type="text" class="form-control" class="input" name="first_name" id="first_name" placeholder="first name">
+       </div>  
+        <div class="inputfield">
+            <label for="last_name">Επίθετο:</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name">
+       </div>  
+       <div class="inputfield">
+        <label for="phone">Τηλέφωνο:</label>
+        <input type="text" class="form-control" name="phone" id="phone" placeholder="Τηλέφωνο">
+       </div>  
+      <div class="inputfield">
+        <label for="email">Email address: (*)</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
+       </div> 
+        <div class="inputfield">
+
+       </div> 
+        <div class="inputfield">
+            <label for="password">Password: (*)</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+       </div> 
+      <div class="inputfield">
+        <label for="passwordConfirmation">Confirm password: (*)</label>
+        <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
+
+       </div> 
+       <button type="submit" class="btn btn-primary">Εγγραφη</button>
+
+    </form>
 </div>
+
+
 <%- include ('partials/footer.ejs') %>
 
 </body>

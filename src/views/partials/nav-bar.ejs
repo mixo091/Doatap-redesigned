@@ -1,0 +1,81 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/css/nav_bar.css">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light " style="border-radius:6px; box-shadow: 7px 7px 7px rgb(31, 41, 48);">
+    <a class="navbar-brand" href="#">
+        <img src="images/Logo-En-Color-white.png" width="210" height="70" alt="doatap-logo" style="background-color: black; padding: 4px; border-radius: 6px;">
+      </a>
+    <ul class="navbar-nav" style="background-color: black;"></ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="text-decoration: none; ">
+            eDoatap
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/">λινκ1</a>
+            <a class="dropdown-item" href="/">λινκ2</a>
+            <a class="dropdown-item" href="/">λινκ3</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="text-decoration: none; ">
+            Αναγνώριση
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/">λινκ1</a>
+            <a class="dropdown-item" href="/">λινκ2</a>
+            <a class="dropdown-item" href="/">λινκ3</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="text-decoration: none; ">
+           Υπηρεσίες
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/">λινκ1</a>
+            <a class="dropdown-item" href="/">λινκ2</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-text " style="text-decoration: none;  " href="/contact">Επικοινωνία<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link nav-text" style="text-decoration: none; " href="/help">Βοήθεια<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <div class="search-box">
+        <input class="search-input" type="text" name="" placeholder="Search...">
+        <button class="search-button" href="#">
+            <i class="fas fa-search"></i>
+        </button>
+      </div>
+  
+      <ul class="nav">
+        <div>
+            <% if(!currentUser) { %>
+                <button class="nav-button sign-up" style="text-decoration: none;"><a class="nav-sign" href="/register">Εγγραφή</a>
+                </button>
+                <button class="nav-button sign-up" style="text-decoration: none;"><a class="sign-links" href="/login">Είσοδος</a>
+                </button>
+                <% } else { %>
+                   <button class="nav-button sign-out">
+                    <a class="sign-links"style="text-decoration: none;" href="/logout">  <%= user.first_name %>  </a>
+                   </button>
+                    <button class="nav-button sign-out">
+                        <a class="sign-links" style="text-decoration: none;" href="/logout">Αποσύνδεση</a>
+                    </button>
+                    <% } %>
+        </div>
+      </ul>
+  </nav>

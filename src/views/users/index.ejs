@@ -6,16 +6,16 @@
 </head>
 
 <body>
-    <%- include ('../partials/nav.ejs') %>
+    <%- include ('../partials/nav-bar.ejs') %>
         <%- include ('../partials/breadcrumbs.ejs') %>
 
-            <div class="container top-padding bottom-padding">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title mb-4">
-                                    <div class="d-flex justify-content-start">
+            <div class="container top-padding bottom-padding" style=" margin-bottom:10vh;">
+                <div class="row" style="color:rgb(255, 255, 255) ;">
+                    <div class="col-12"  >
+                        <div class="card" style= "border-radius: 12px; background-color: rgb(29, 29, 29); 	box-shadow: 5px 5px 5px rgb(0, 0, 0);" >
+                            <div class="card-body " style= "border-radius: 12px; background-color: rgb(29, 29, 29);">
+                                <div class="card-title mb-4" >
+                                    <div class="d-flex justify-content-start " style = "padding-top:20px">
                                         <div class="image-container">
                                             <i class="bi bi-file-person-fill"></i>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="180" height="160"
@@ -25,12 +25,12 @@
                                             </svg>
                                         </div>
                                         <div class="userData ml-3">
-                                            <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Προφίλ</h2>
+                                            <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold ; text-align: center; font-family: 'Play' ,sans-serif; font-weight: lighter"><%= user.first_name %> <%= user.last_name %></h2>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="m-4">
-                                    <ul class="nav nav-pills" id="myTab">
+                                <div class="m-4" style="align-items: center;">
+                                    <ul class="nav nav-pills" id="myTab" style = "padding-top: 20px;" >
                                         <li class="nav-item">
                                             <a href="#info" class="nav-link active">Βασικές Πληροφορίες</a>
                                         </li>
@@ -41,13 +41,13 @@
                                             <a href="#messages" class="nav-link">Μηνύματα</a>
                                         </li>
                                     </ul>
-                                    <div class="tab-content">
+                                    <div class="tab-content" style="padding-top: 30px;">
                                         <div class="tab-pane fade show active" id="home">
                                             <div class="row">
                                                 <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Όνομα</label>
+                                                    <label style="font-weight:bold; font-family: 'Play' , sans-serif;">Όνομα</label>
                                                 </div>
-                                                <div class="col-md-8 col-6">
+                                                <div class="col-md-8 col-6 " style="padding-top:10px;">
                                                     <%= user.first_name %>
                                                 </div>
                                             </div>
@@ -56,7 +56,7 @@
                                                 <div class="col-sm-3 col-md-2 col-5">
                                                     <label style="font-weight:bold;">Επώνυμο</label>
                                                 </div>
-                                                <div class="col-md-8 col-6">
+                                                <div class="col-md-8 col-6 padding-top:10px;">
                                                     <%= user.last_name %>
                                                 </div>
                                             </div>
@@ -65,7 +65,7 @@
                                                 <div class="col-sm-3 col-md-2 col-5">
                                                     <label style="font-weight:bold;">Τηλέφωνο</label>
                                                 </div>
-                                                <div class="col-md-8 col-6">
+                                                <div class="col-md-8 col-6 padding-top:10px;">
                                                     <%= user.phone %>
                                                 </div>
                                             </div>
@@ -74,20 +74,20 @@
                                                 <div class="col-sm-3 col-md-2 col-5">
                                                     <label style="font-weight:bold;">Email</label>
                                                 </div>
-                                                <div class="col-md-8 col-6">
+                                                <div class="col-md-8 col-6 padding-top:10px;">
                                                     <%= user.email %>
                                                 </div>
                                             </div>
                                             <hr />
-                                            <a class="btn btn-outline-primary" href="/account/edit">Επεξεργασία <i
+                                            <a class="btnn btn-outline-primary" href="/account/edit">Επεξεργασία  <i
                                                     class="fas fa-user-edit"></i></a>
-                                            <a class="btn btn-outline-primary" href="/account/edit/pwd">Αλλαγή
+                                            <a class="btnn btn-outline-primary" href="/account/edit/pwd">Αλλαγή
                                                 Κωδικού <i class="fas fa-key"></i></a>
-                                            <a class="btn btn-outline-danger" href="/<%= user.id %>">Διαγραφή
+                                            <a class="btnn btn-outline-danger" href="/<%= user.id %>">Διαγραφή
                                                 Λογαριασμού <i class="fas fa-key"></i></a>
                                         </div>
                                         <div class="tab-pane fade" id="profile">
-                                            <h4 class="mt-2">Aitiseis</h4>
+                                            <h4 class="mt-2">Οι Αιτήσεις μου.</h4>
                                             <table class="table">
                                                 <thead>
                                                   <tr>
@@ -130,67 +130,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row">
-                                <div class="col-12">
-                                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" role="tab"
-                                                aria-controls="basicInfo" aria-selected="true">Βασικές Πληροφορίες</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" role="tab"
-                                                aria-controls="basicInfo" aria-selected="true" href="/account/aitiseis">Αιτήσεις</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content ml-1" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel"
-                                            aria-labelledby="basicInfo-tab">
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Όνομα</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    <%= user.first_name %>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Επώνυμο</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    <%= user.last_name %>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Τηλέφωνο</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    <%= user.phone %>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Email</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    <%= user.email %>
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <a class="btn btn-outline-primary" href="/account/edit">Επεξεργασία <i
-                                                    class="fas fa-user-edit"></i></a>
-                                            <a class="btn btn-outline-primary" href="/account/edit/pwd">Αλλαγή
-                                                Κωδικού <i class="fas fa-key"></i></a>
-                                            <a class="btn btn-outline-danger" href="/<%= user.id %>">Διαγραφή 
-                                                Λογαριασμού <i class="fas fa-key"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             </div>
                         </div>
                     </div>
@@ -211,6 +150,9 @@
                     });
                 });
             </script>
+
+
+<%- include ('../partials/footer.ejs') %>
 </body>
 
 </html>
