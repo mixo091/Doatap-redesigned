@@ -78,8 +78,27 @@
 	margin: 0 20px;
 	border-radius: 12px;
 	box-shadow: 5px 5px 5px rgb(68, 91, 109);
+	margin-top:4vh;
 }
 
 .btnn:hover{
 	text-decoration: none;
+}
+
+
+.prof-btn{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	margin-right: 0;
+	text-align: center;
+	font-family: 'Play' , sans-serif;
+	font-size: 16px;
+	border:none;
+	background-color: wheat;
+	color:black;
+	
+}
+
+.prof-btn:hover{
+	transform: scale(1.1);
 }

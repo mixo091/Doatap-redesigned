@@ -11,29 +11,41 @@
 }
 
 .main-page{
-    height: 90vh;
-    background-color: #1e8ee9;
+    height: 110vh;
+    background-color:	#e3e3e3;
 }
 
 
 .shortcut-menu {
     margin-top: 2vh;
-    margin-bottom: 2vh;
     float: left;
     width: 25%;
     text-align: center;
-    height: 60vh;
+    background-color:	#e3e3e3;
+    height: 52vh;
   }
   
 .shortcut-menu .shortcut-link {
-    background-color: #e5e5e5;
+    background-color: #c7c7c7;
     padding: 8px;
     margin-top: 2vh;
     margin-bottom: 2vh;
     display: block;
     width: 100%;
-    height: 15vh;
+    text-align: center;
+    padding-top: 20px;
+    font-family: 'Play' ,sans-serif;
+    font-size: 18px;
+    height: 13vh;
+    cursor: pointer;
     color: black;
+    border-radius: 8px;
+    border-bottom: 2px solid rgb(90, 90, 90);
+    
+  }
+
+  .shortcut-menu .shortcut-link:hover{
+      transform: scale(1.1);
   }
 
 
@@ -42,60 +54,91 @@
     width: 50%;
     padding: 0 20px;
     height: 60vh;
+ 
+    background-color: 	#e3e3e3;
   }
   
 .Anouncements {
-    background-color: #e5e5e5;
+    background-color:	#e3e3e3;
     float: left;
     width: 25%;
-    padding: 15px;
-    margin-top: 4vh;
+    
     margin-bottom: 2vh;
     text-align: center;
     height: 60vh;
+    border-radius: 4px;;
   }
-
-
-.main-title{
-    padding: 20px;
+.Anouncements-title{
     text-align: center;
-    font-weight: lighter;
-    font-size: 12px;
+    font-size: 22px;
     font-family: 'Play' , sans-serif;
+    border-bottom: 1px solid rgb(85, 187, 235);
 }
 
-/* Anagnorisi Shortcut Styling */
 
-
-.shortcuts-1{
-    width:100%;
-    height:75vh;
-    background-color: rosybrown;
-    display: flex;
-
-
-}
-
-.anagnwrish{
-    height: inherit;
-    width: 80%;
-    background-color:rgb(179, 179, 179);
-    position: relative;
+.Anouncement{
+    padding:10px;
+    margin:10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 6px;
+    cursor: pointer;
     border-radius: 6px;
     
 }
-.anagnwrish:hover{
-    background-color:rgb(201, 200, 200);
+
+.Anouncement:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+
+.main-title{
+
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;  
+    font-family: 'Play' , sans-serif;
+    padding-top:50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    
+}
+
+
+.a-head{
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    margin-top:6px;
+    
+
+    
 
 }
+
+.a-body{
+    padding-bottom: 6px;
+
+}
+
+
+.anagnwrish{
+    height: 100%;
+    border-radius: 6px;
+    font-family: 'Play' ,sans-serif;
+    
+}
+
 
 .efarmogh{
     padding-top: 5vh;
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    height: 60%;
+    font-family: 'Play' ,sans-serif;
     padding-right: 8vh;
     padding-left: 8vh;
+    border-bottom: solid 1px black;
 
 
 }
@@ -104,7 +147,9 @@
     padding-top: 5vh;
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    height: 40%;
+    font-family: 'Play' ,sans-serif;
+  
     padding-right: 8vh;
     padding-left: 8vh;
     
@@ -190,49 +235,6 @@
   
 }
 
-.anakoinwseis{
-    height: inherit;
-    width: 20%;
-    background-color: rgb(14, 19, 10);
-    border-radius: 12px;
-
-}
-
-
-.anakoinwsh{
-    margin:1vh;
-    border-width: 2px;
-    border-top-color: rgb(85, 187, 235);
-    border-top:rgb(85, 187, 235) ;
-    border-left:none;
-    border-right:none;  
-    height: 16vh;
-    width: 40vh;
-    border-bottom-color: rgb(85, 187, 235);
-    color: ivory;
-    border-radius: 12px;
-    padding-top: 10px;
-}
-
-.anakoinwsh:hover{
-    cursor: pointer;
-    background-color:rgb(43, 43, 43);
-}
-
-
-
-.anakoinwsh-titlos{
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 4px;
-    font-family: 'Play',sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.anakoinwsh-info{
-    padding:4px;
-}
 
 
 
@@ -245,7 +247,7 @@
 	height: 1px;
 }
 
-.blue{
+.dark{
     margin-top: 8px;
 }
 
@@ -262,7 +264,7 @@
 }
 
 
-.div-transparent-blue:before
+.div-transparent-dark:before
 {
 	content: "";
 	position: absolute;
@@ -271,7 +273,7 @@
 	right: 5%;
 	width: 90%;
 	height: 2px;
-    background-image: linear-gradient(to right, transparent, rgb(85, 187, 235), transparent);
+    background-image: linear-gradient(to right, transparent, rgb(0, 0, 0), transparent);
 }
 
 .div-arrow-down:after
@@ -360,3 +362,11 @@
 	background-color: #69beff;
 	border-color: #54b5ff;
 }
+
+
+  @media only screen and (max-width: 800px) {
+    /* For mobile phones: */
+    .shortcut-menu, .main-content, .Anouncements {
+      width: 100%;
+    }
+  }
