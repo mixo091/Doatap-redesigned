@@ -70,11 +70,15 @@
                 </button>
                 <% } else { %>
                    <button class="nav-button sign-out">
+<<<<<<< HEAD
                     <% if(currentUser.isAdmin != 1) { %>
                       <a class="sign-links"style="text-decoration: none;" href="/account">  <%= currentUser.first_name %>  </a>
                     <% } else { %>
                       <a class="sign-links"style="text-decoration: none;" href="/admin">  <%= currentUser.first_name %>  </a>
                     <% } %>
+=======
+                    <a class="sign-links"style="text-decoration: none;" href="/logout">  <%= currentUser.first_name %>  </a>
+>>>>>>> 26d367c8624cd5377dae72c34761f248649b1edd
                    </button>
                     <button class="nav-button sign-out">
                         <a class="sign-links" style="text-decoration: none;" href="/logout">Αποσύνδεση</a>

@@ -5,7 +5,7 @@
     <%- include ('partials/header.ejs') %>
 </head>
 
-<body style=" height: 160vh; background-color: tomato;">
+<body>
     <div class="container">
         <% if(success && success.length > 0){ %>
         <div class="alert alert-success" role="alert">
@@ -15,7 +15,7 @@
     </div>
     <%- include ('partials/nav-bar.ejs') %>
     <div class="main-page ">
-    <div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+    <div style="font-size: 22px; font-family:'Play',sans-serif ;background-color:	#e3e3e3;padding:15px;text-align:center; height:25vh;">
         <h1 class = "main-title">Aναγνώρισε τις σπουδές σου στην Ελλάδα και
             συνέχισε την επαγγελματική σου σταδιοδρομία εδώ</h1>
       </div>
@@ -23,21 +23,51 @@
       <div >
         <div class="shortcut-menu">
 
-          <div class =  " shortcut-link " >    shortcut 1  </div>
-          <div class =  " shortcut-link " >    shortcut 2  </div>
-          <div class =  " shortcut-link " >    shortcut 3  </div>
-          <div class =  " shortcut-link " >    shortcut 4  </div>
+          <div class =  " shortcut-link " style="background-color:white ; color: black;" >    Πληροφορίες  </div>
+          <div class =  " shortcut-link " style="background-color:rgb(173, 173, 173) ; color:black" >    Επικοινώνησε μαζί μας - Κλείσε ραντεβού  </div>
+          <div class =  " shortcut-link " style="background-color:rgb(82, 140, 189) ;color: azure;">    Εξετάσεις Οδοντιατρικής   </div>
+          <div class =  " shortcut-link " style="background-color:black; color:azure;" >    Τα τελευταία νέα </div>
 
         </div>
       
-        <div class="main-content">
-          <h2>Lorum Ipsum</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <div class="main-content ">
+            <div class="anagnwrish">
+                <div class="efarmogh">
+                    Αν επιθυμείτε να υποβάλλετε αίτηση για την αναγνώριση τίτλου σπουδών σας συνδεθείτε με τη πλατφόρμα
+                    <button class="e-doatap-btn "><img src="images/Logo - eDoatap Color white-lettters.png"
+                            class="logo-btn" alt=""></button>
+                </div>
+                <div class="anagnwrish-info">
+                    Δικαιολογητικά,παράβολα και πληροφορίες για την αίτηση αναγνώρισης
+                    <button class="learn-more">Μάθε περισσότερα >></button>
+        </div>
+            </div>
         </div>
       
         <div class="Anouncements">
-          <h2>About</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          <div class= "Anouncements-title">Ανακοινώσεις</div>
+          <div class="Anouncements-content">
+              <div class= "Anouncement">
+                  <div class="a-head">ανακοίνωση 1</div>
+                  <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, provident! </div>
+              </div>
+              <div class= "Anouncement">
+                <div class="a-head">ανακοίνωση 2</div>
+                <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, provident! </div>
+            </div>
+            <div class= "Anouncement">
+                <div class="a-head">ανακοίνωση 3</div>
+                <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, provident!</div>
+            </div>
+            <div  class= "Anouncement">
+                <div class="a-head">ανακοίνωση 4</div>
+                <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, provident!</div>
+            </div>
+   
+
+
+          </div>
+          
         </div>
       </div>
 
