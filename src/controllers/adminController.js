@@ -1,6 +1,6 @@
 // const DBConnection = require('../config/dbConnection');
 // const loginService = require('../services/loginService');
-// const userService = require('../services/userService');
+const userService = require('../services/userService');
 
 
 let getAdminProfile = (req, res) => {
@@ -17,6 +17,37 @@ let getAdminProfile = (req, res) => {
         res.redirect('/login')
     }
 };
+
+let getAllRequests = async(req, res) => {
+    if(req.session.loggedin && req.session.currentUser.isAdmin == 1) {
+        req.breadcrumbs([{
+            name: 'Προφίλ',
+            url: '/admin'
+        }, {
+            name: 'Αιτήσεις',
+            url: '/all-requests'
+        }])
+
+        try {
+            let rows = await userService.getAllUsersRequests(req.session.currentUser.user_id)
+
+            const result = Object.values(JSON.parse(JSON.stringify(rows)));
+
+            return res.render('users/admin', 
+            { 
+                result, 
+                user: req.session.currentUser 
+            })
+        } catch(err) {
+            console.log(err)
+            return res.redirect("/login");
+        }
+    } else {
+        // req.flash('errors')
+        res.redirect('/login')
+    }
+};
+
 
 // let getUserInfo = (req, res) => {
 //     if(req.session.loggedin) {
@@ -80,5 +111,6 @@ let getAdminProfile = (req, res) => {
 // };
 
 module.exports = {
-    getAdminProfile: getAdminProfile
+    getAdminProfile: getAdminProfile,
+    getAllRequests: getAllRequests
 }

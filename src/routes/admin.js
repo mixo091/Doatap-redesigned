@@ -5,5 +5,6 @@ const adminController = require('../controllers/adminController');
 // const userController = require('../controllers/userController');
 
 router.get('/', adminController.getAdminProfile)
+router.get('/all-requests', adminController.getAllRequests)
 
 module.exports = router;

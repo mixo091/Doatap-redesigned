@@ -6,13 +6,19 @@
 </head>
 
 <body>
-    <div class="container">
+    <% if(success && success.length > 0){ %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><%= success %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    <!-- <div class="container">
         <% if(success && success.length > 0){ %>
         <div class="alert alert-success" role="alert">
             <%= success %>
         </div>
         <% } %>
-    </div>
+    </div> -->
     <%- include ('partials/nav-bar.ejs') %>
     <div class="main-page ">
     <div style="font-size: 22px; font-family:'Play',sans-serif ;background-color:	#e3e3e3;padding:15px;text-align:center; height:25vh;">

@@ -51,8 +51,29 @@ let getUserRequestsById = (id) => {
     });
 };
 
+let getAllUsersRequests = (id) => {
+    return new Promise(async (resolve, reject) => {
+
+        console.log('admin_id = ', id)
+
+        //create a new request
+        DBConnection.query(
+            ' SELECT * FROM requests where user_id != ? ORDER BY user_id ', id,
+            function(err, rows) {
+                if (err) {
+                    reject(false)
+                }
+                // console.log(rows)
+                resolve(rows)
+                // resolve("Create a new request successful");
+            }
+        );   
+    });
+};
+
 
 module.exports = {
     createNewRequest: createNewRequest,
-    getUserRequestsById: getUserRequestsById
+    getUserRequestsById: getUserRequestsById,
+    getAllUsersRequests: getAllUsersRequests
 };

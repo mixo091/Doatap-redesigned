@@ -24,7 +24,7 @@ let createNewUser = (data) => {
                 ' INSERT INTO user set ? ', userItem,
                 function(err, rows) {
                     if (err) {
-                        reject(false)
+                        reject(err)
                     }
                     resolve("Create a new user successful");
                 }

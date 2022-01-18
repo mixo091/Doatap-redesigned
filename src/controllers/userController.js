@@ -129,18 +129,18 @@ let createNewRequest = async(req,res) => {
 
 let getAllRequests = async(req,res) => {    
     if (req.session.loggedin && req.session.currentUser.isAdmin != 1) {
+        req.breadcrumbs([{
+            name: 'Προφίλ',
+            url: '/account'
+        }, {
+            name: 'Οι αιτήσεις μου',
+            url: '/account/user-requests'
+        }])
+        
         try {
             let rows = await userService.getUserRequestsById(req.session.currentUser.user_id);
 
             const result = Object.values(JSON.parse(JSON.stringify(rows)));
-
-            req.breadcrumbs([{
-                name: 'Προφίλ',
-                url: '/account'
-            }, {
-                name: 'Οι αιτήσεις μου',
-                url: '/account/user-requests'
-            }])
 
             result.forEach(v => console.log(v.req_id)) 
             // console.log(result.stringify)

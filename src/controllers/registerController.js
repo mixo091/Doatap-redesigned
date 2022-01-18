@@ -33,9 +33,12 @@ let createNewUser = async(req,res) => {
          password: req.body.password
      };
      try {
-         await registerService.createNewUser(newUser);
+         let message = await registerService.createNewUser(newUser);
+         console.log(message)
+         req.flash('success', 'Ο λογαριασμός σας δημιουργήθηκε επιτυχώς!')
          return res.redirect("/login");
      } catch (err) {
+         console.log(err)
          req.flash("errors", err);
          return res.redirect("/register");
      }
