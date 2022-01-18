@@ -19,6 +19,7 @@ let handleLogin = async(req,res) => {
         errors.forEach((item) => {
             errorsArr.push(item.msg);
         });
+        // console.log(errorsArr)
         req.flash("errors", errorsArr);
         return res.redirect("/login");
     }
@@ -26,6 +27,7 @@ let handleLogin = async(req,res) => {
         await loginService.handleLogin(req.body.email, req.body.password);
         return res.redirect("/")
     } catch (err) {
+        console.log(err)
         req.flash("errors", err);
         return res.redirect("/login");
     }
@@ -38,6 +40,18 @@ let createLogin = async(req, res) => {
         isAdmin
     } = req.body;
 
+    let errorsArr = [];
+    let validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+        let errors = Object.values(validationErrors.mapped());
+        errors.forEach((item) => {
+            errorsArr.push(item.msg);
+        });
+        console.log(errorsArr)
+        req.flash("errors", errorsArr);
+        return res.redirect("/login");
+    }
+
     try {
         await loginService.findUserByEmail(email).then(async (user) => {
             if(user) {
@@ -49,16 +63,21 @@ let createLogin = async(req, res) => {
                      console.log("req.session.currentUser => ", req.session.currentUser)
                      // response.redirect('/account')
                      if (user.isAdmin == 1) {
-                         res.redirect('/admin/profile')
+                         return res.redirect('/admin')
                      } else {
                          res.redirect('/account')
                      }
                 } else {
-                    req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
+                    req.session.message = {
+                        type: 'danger',
+                        intro: 'Τα στοιχεία που καταχωρήσατε είναι λανθασμένα',
+                        message: 'Παρακαλώ ξαναπροσπαθήστε'
+                    }
+                    // req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
                     res.redirect("/login")
                 }
             } else {
-                req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
+                // req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
                 res.redirect("/login")
             }
         })

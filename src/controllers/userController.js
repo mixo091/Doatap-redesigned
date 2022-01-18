@@ -3,7 +3,7 @@ const loginService = require('../services/loginService');
 const userService = require('../services/userService');
 
 let getUserProfile = (req, res) => {
-    if(req.session.loggedin) {
+    if(req.session.loggedin && req.session.currentUser.isAdmin != 1) {
         req.breadcrumbs({
             name: 'Προφίλ',
             url: '/account'
@@ -18,7 +18,7 @@ let getUserProfile = (req, res) => {
 };
 
 let getNewRequestPage = (req, res) => {
-    if(req.session.loggedin) {
+    if(req.session.loggedin && req.session.currentUser.isAdmin != 1 ) {
         req.breadcrumbs([{
             name: 'Προφίλ',
             url: '/account'
@@ -36,7 +36,7 @@ let getNewRequestPage = (req, res) => {
 };
 
 let getUserInfo = (req, res) => {
-    if(req.session.loggedin) {
+    if(req.session.loggedin && req.session.currentUser.isAdmin != 1 ) {
         req.breadcrumbs([{
             name: 'Προφίλ',
             url: '/account'
@@ -54,7 +54,7 @@ let getUserInfo = (req, res) => {
 };
 
 let updateUserInfo = async(req,res) => {
-    if (req.session.loggedin) {
+    if (req.session.loggedin && req.session.currentUser.isAdmin != 1) {
         const {
             first_name,
             last_name,
@@ -128,7 +128,7 @@ let createNewRequest = async(req,res) => {
 };
 
 let getAllRequests = async(req,res) => {    
-    if (req.session.loggedin) {
+    if (req.session.loggedin && req.session.currentUser.isAdmin != 1) {
         try {
             let rows = await userService.getUserRequestsById(req.session.currentUser.user_id);
 
@@ -144,15 +144,17 @@ let getAllRequests = async(req,res) => {
 
             result.forEach(v => console.log(v.req_id)) 
             // console.log(result.stringify)
-            return res.render('users/user-requests', { result })
+            return res.render('users/user-requests', 
+            { 
+                result, 
+                user: req.session.currentUser 
+            })
         } catch (err) {
             req.flash("errors", err);
             return res.redirect("/login");
         }
     }
 };
-
-
 
 
 module.exports = {

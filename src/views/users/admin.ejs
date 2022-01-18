@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ('../partials/header.ejs') %>
+</head>
+
+<body>
+    <%- include ('../partials/nav-bar.ejs') %>
+        <%- include ('../partials/breadcrumbs.ejs') %>
+
+        <div class="containter">
+            Welcome admin 
+            <%= user.first_name %> 
+            <%= user.last_name %>
+        </div>
+
+
+<%- include ('../partials/footer.ejs') %>
+</body>
+
+</html>

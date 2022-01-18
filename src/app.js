@@ -11,6 +11,7 @@ const passport = require('passport');
 // require routes
 const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/users');
+const adminRoutes = require('./routes/admin');
 
 let app = express();
 
@@ -43,7 +44,8 @@ app.use((request, response, next) => {
     response.locals.loggedin = request.session.loggedin
     response.locals.currentUser = request.session.currentUser
     response.locals.success = request.flash("success")
-    response.locals.success = request.flash("errors")
+    response.locals.errors = request.flash("errors")
+    response.locals.message = request.session.message
     response.locals.breadcrumbs = request.breadcrumbs()
     next()
 })
@@ -54,6 +56,7 @@ app.use(passport.session());
 
 app.use("/", indexRoutes)
 app.use("/account", userRoutes)
+app.use("/admin", adminRoutes)
 
 let port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Building a login system with NodeJS is running on port ${port}!`));

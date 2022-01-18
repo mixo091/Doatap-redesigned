@@ -7,6 +7,12 @@
 <%- include ('partials/nav-bar.ejs') %>
 <%- include ('partials/breadcrumbs.ejs') %>
 
+<% if (message) {%>
+<div class="alert alert-danger">
+	<button type="button" name="close" data-dismiss="alert">&times;</button>
+	<strong><%= message.intro%></strong> <%=message.message %>
+</div>
+<% } %>
 <!-- 
 <div class="container1">
     <div class="img">
@@ -35,11 +41,11 @@
 -->
 <div class="container1">
 		<div class="img">
-			<img src="images/edu.svg">
+			<img src="/images/Edu.svg">
 		</div>
 		<div class="login-content">
 			<form action="/login" method="POST">
-				<img src="images/user.svg">
+				<img src="/images/user.svg">
 				<h2 class="title" style="font-family: 'Play' , sans-serif;"> Καλωσήρθες</h2>
            		<div class="input-div one">
            		   <div class="i">
