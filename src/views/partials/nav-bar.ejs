@@ -1,12 +1,7 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-<link rel="stylesheet" href="/css/nav_bar.css">
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light " style="border-radius:6px; box-shadow: 7px 7px 7px rgb(31, 41, 48);">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius:6px; box-shadow: 7px 7px 7px rgb(31, 41, 48);">
     <a class="navbar-brand" href="/">
-        <img src="images/Logo-En-Color-white.png" width="210" height="70" alt="doatap-logo" style="background-color: black; padding: 4px; border-radius: 6px;">
-      </a>
+        <img src="/Logo-En-Color-white.png" width="210" height="70" alt="doatap-logo" style="background-color: black; padding: 10px; border-radius: 6px;">
+    </a>
     <ul class="navbar-nav" style="background-color: black;"></ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +66,7 @@
                 <% } else { %>
                    <button class="nav-button sign-out">
                     <% if(currentUser.isAdmin != 1) { %>
-                      <a class="sign-links"style="text-decoration: none;" href="/account">  <%= currentUser.first_name %>  </a>
+                      <a class="sign-links"style="text-decoration: none;" href="/user-menu">  <%= currentUser.first_name %>  </a>
                     <% } else { %>
                       <a class="sign-links"style="text-decoration: none;" href="/admin">  <%= currentUser.first_name %>  </a>
                     <% } %>

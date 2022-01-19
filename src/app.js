@@ -6,6 +6,7 @@ const connectFlash = require('connect-flash');
 const breadcrumbs = require('express-breadcrumbs');
 const path = require('path');
 const methodOverride = require('method-override');
+const fileUpload = require('express-fileupload');
 const passport = require('passport');
 
 // require routes
@@ -22,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(connectFlash());
+app.use(fileUpload());
+
 // Enable breadcrumbs
 app.use(breadcrumbs.setHome({
     name: 'Αρχική',
@@ -43,6 +46,7 @@ app.set('view engine', 'ejs');
 app.use((request, response, next) => {
     response.locals.loggedin = request.session.loggedin
     response.locals.currentUser = request.session.currentUser
+    response.locals.request = request.session.request
     response.locals.success = request.flash("success")
     response.locals.errors = request.flash("errors")
     response.locals.message = request.session.message
@@ -55,7 +59,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", indexRoutes)
-app.use("/account", userRoutes)
+app.use("/user-menu", userRoutes)
 app.use("/admin", adminRoutes)
 
 let port = process.env.PORT || 8080;

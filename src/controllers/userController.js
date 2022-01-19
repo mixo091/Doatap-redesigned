@@ -2,13 +2,31 @@ const DBConnection = require('../config/dbConnection');
 const loginService = require('../services/loginService');
 const userService = require('../services/userService');
 
-let getUserProfile = (req, res) => {
+let getUserMenu = (req, res) => {
     if(req.session.loggedin && req.session.currentUser.isAdmin != 1) {
         req.breadcrumbs({
-            name: 'Προφίλ',
-            url: '/account'
+            name: 'Μενού',
+            url: '/user-menu'
         })
         return res.render('users/index', {
+            user: req.session.currentUser
+        })
+    } else {
+        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        res.redirect('/login')
+    }
+};
+
+let getUserProfile = (req, res) => {
+    if(req.session.loggedin && req.session.currentUser.isAdmin != 1) {
+        req.breadcrumbs([{
+            name: 'Μενού',
+            url: '/user-menu'
+        } , {
+            name: 'Πληροφορίες Χρήστη',
+            url: '/user-menu/user-info' 
+        }])
+        return res.render('users/user-info', {
             user: req.session.currentUser
         })
     } else {
@@ -20,11 +38,11 @@ let getUserProfile = (req, res) => {
 let getNewRequestPage = (req, res) => {
     if(req.session.loggedin && req.session.currentUser.isAdmin != 1 ) {
         req.breadcrumbs([{
-            name: 'Προφίλ',
-            url: '/account'
+            name: 'Μενού',
+            url: '/user-menu'
         }, {
             name: 'Νέα Αίτηση',
-            url: '/account/request'
+            url: '/user-menu/request'
         }])
         return res.render('users/request', {
             user: req.session.currentUser
@@ -38,11 +56,11 @@ let getNewRequestPage = (req, res) => {
 let getUserInfo = (req, res) => {
     if(req.session.loggedin && req.session.currentUser.isAdmin != 1 ) {
         req.breadcrumbs([{
-            name: 'Προφίλ',
-            url: '/account'
+            name: 'Μενού',
+            url: '/user-menu'
         }, {
             name: 'Επεξεργασία προφίλ',
-            url: '/account/edit'
+            url: '/user-menu/edit'
         }])
         return res.render('users/edit', {
             user: req.session.currentUser
@@ -67,7 +85,7 @@ let updateUserInfo = async(req,res) => {
             let match = await loginService.comparePassword(password, req.session.currentUser);
             if(match == false ){
                 req.flash('errors', 'Λάθος κωδικός')
-                res.redirect('/account/edit')
+                res.redirect('/user-menu/edit')
             } else {
                 DBConnection.query('UPDATE user SET first_name = ?, last_name = ?, phone = ?, email = ? WHERE user_id = ?', 
                                             [first_name, last_name, phone, email, req.session.currentUser.user_id],  
@@ -83,7 +101,7 @@ let updateUserInfo = async(req,res) => {
                     // req.session.currentUser.password = password
                     console.log('result => ', result)
                     req.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
-                    res.redirect('/account');
+                    res.redirect('/user-menu');
                 })
             }
         } catch (err) {
@@ -116,25 +134,27 @@ let createNewRequest = async(req,res) => {
         certificate: req.body.certificate,
         recognition: req.body.recognition
     };
+
+    req.session.request = newRequest;
     
     try {
         await userService.createNewRequest(newRequest);
 
-        return res.redirect("/account");
+        return res.redirect("/user-menu");
     } catch (err) {
         req.flash("errors", err);
-        return res.redirect("/login");
+        // return res.redirect("/login");
     }
 };
 
 let getAllRequests = async(req,res) => {    
     if (req.session.loggedin && req.session.currentUser.isAdmin != 1) {
         req.breadcrumbs([{
-            name: 'Προφίλ',
-            url: '/account'
+            name: 'Μενού',
+            url: '/user-menu'
         }, {
             name: 'Οι αιτήσεις μου',
-            url: '/account/user-requests'
+            url: '/user-menu/user-requests'
         }])
         
         try {
@@ -156,12 +176,33 @@ let getAllRequests = async(req,res) => {
     }
 };
 
+let uploadFiles = async (req, res) => {
+    if (req.session.loggedin && req.session.currentUser.isAdmin != 1) {
+        let sampleFile;
+
+        if(!req.files || Object.keys(req.files).length() === 0) {
+            return res.status(400).send('No files were uploaded.')
+        }
+        sampleFile = req.files.sampleFile;
+        
+        try {
+            await userService.uploadFiles(sampleFile)
+        } catch (err) {
+            console.log(err)
+            req.flash("errors", err);
+        }
+    }
+};
+
+
 
 module.exports = {
+    getUserMenu: getUserMenu,
     getUserProfile: getUserProfile,
     getUserInfo: getUserInfo,
     updateUserInfo: updateUserInfo,
     getNewRequestPage: getNewRequestPage,
     createNewRequest: createNewRequest,
-    getAllRequests: getAllRequests
+    getAllRequests: getAllRequests,
+    uploadFiles: uploadFiles
 }

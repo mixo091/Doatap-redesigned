@@ -65,7 +65,7 @@ let createLogin = async(req, res) => {
                      if (user.isAdmin == 1) {
                          return res.redirect('/admin')
                      } else {
-                         res.redirect('/account')
+                         res.redirect('/user-menu')
                      }
                 } else {
                     req.session.message = {

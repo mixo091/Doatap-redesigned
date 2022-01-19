@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include ('../partials/header.ejs') %>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="js/nav-script.js"></script> -->
+</head>
+<body>
+    <%- include ('../partials/nav-bar.ejs') %>
+    <%- include ('../partials/breadcrumbs.ejs') %> 
+
+             <div class="container top-padding bottom-padding" style=" margin-bottom:10vh;">
+                <div class="row" style="color:rgb(255, 255, 255) ;">
+                    <div class="col-12"  >
+                        <div class="card" style= "border-radius: 12px; background-color: rgb(29, 29, 29); 	box-shadow: 5px 5px 5px rgb(0, 0, 0);" >
+                            <div class="card-body " style= "border-radius: 12px; background-color: rgb(29, 29, 29);">
+                                <div class="card-title mb-4" >
+                                    <div class="d-flex justify-content-start " style = "padding-top:20px">
+                                        <div class="image-container">
+                                            <i class="bi bi-file-person-fill"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="180" height="160"
+                                                fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
+                                            </svg>
+                                        </div>
+                                        <div class="userData ml-3">
+                                            <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold ; text-align: center; font-family: 'Play' ,sans-serif; font-weight: lighter"><%= user.first_name %> <%= user.last_name %></h2>
+                                        </div>                                        
+                                    </div>
+
+                                </div>
+                                <div class="m-4" style="align-items: center;">
+                                    <ul class="nav nav-pills" id="myTab" style = "padding-top: 20px;" >
+                                        <li class="nav-item">
+                                            <span  style = "margin:5vh; font-size: 20px; font-family: 'Play' ,sans-serif; color:#1e8ee9 " class=" active">Βασικές Πληροφορίες</span>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" style="padding-top: 30px;">
+                                        <div class="tab-pane fade show active" id="home">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold; font-family: 'Play' , sans-serif;">Όνομα</label>
+                                                </div>
+                                                <div class="col-md-8 col-6 " style="padding-top:10px;">
+                                                    <%= user.first_name %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Επώνυμο</label>
+                                                </div>
+                                                <div class="col-md-8 col-6 padding-top:10px;">
+                                                    <%= user.last_name %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Τηλέφωνο</label>
+                                                </div>
+                                                <div class="col-md-8 col-6 padding-top:10px;">
+                                                    <%= user.phone %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-2 col-5">
+                                                    <label style="font-weight:bold;">Email</label>
+                                                </div>
+                                                <div class="col-md-8 col-6 padding-top:10px;">
+                                                    <%= user.email %>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <a class="btnn btn-outline-primary" href="/user-menu/edit">Επεξεργασία  <i
+                                                    class="fas fa-user-edit"></i></a>
+                                            <a class="btnn btn-outline-primary" href="/user-menu/edit/pwd">Αλλαγή
+                                                Κωδικού <i class="fas fa-key"></i></a>
+                                            <a class="btnn btn-outline-danger" href="/<%= user.id %>">Διαγραφή
+                                                Λογαριασμού <i class="fas fa-key"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+           
+<%- include ('../partials/footer.ejs') %>
+</body>
+
+</html>

@@ -13,16 +13,9 @@
             Welcome admin 
             <%= user.first_name %> 
             <%= user.last_name %>
-            <div class="container top-padding bottom-padding">
-                <ul>
-                  <% result.forEach(function(item) { %>
-                    <li><%= item.req_id %></li>
-                    <li><%= item.country %></li>
-                    <li><%= item.university %></li>
-                  <% })%>
-                </ul>  
-              </div>
-        </div>
+          </div>
+           
+        
 
 
 <%- include ('../partials/footer.ejs') %>

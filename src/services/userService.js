@@ -8,7 +8,9 @@ let createNewRequest = (data) => {
             country: data.country,
             university: data.university,
             certificate: data.certificate,
-            recognition: data.recognition
+            recognition: data.recognition,
+            id_file: '',
+            diploma_file: ''
         };
 
         console.log(reqItem)
@@ -18,9 +20,8 @@ let createNewRequest = (data) => {
             ' INSERT INTO requests set ? ', reqItem,
             function(err, rows) {
                 if (err) {
+                    console.log(err)
                     reject(false)
-                    console.log("Error")
-
                 }
                 console.log("ok")
                 resolve("Create a new request successful");
@@ -71,9 +72,29 @@ let getAllUsersRequests = (id) => {
     });
 };
 
+let uploadFiles = (data, id) => {
+    return new Promise(async (resolve, reject) => {
+
+        console.log(data)
+        //create a new request
+        DBConnection.query(
+            ' UPDATE requests SET id_file = ? WHERE user_id = ? ORDER BY user_id ', [data.name, id],
+            function(err, rows) {
+                if (err) {
+                    reject(false)
+                }
+                // console.log(rows)
+                resolve(rows)
+                // resolve("Create a new request successful");
+            }
+        );   
+    });
+};
+
 
 module.exports = {
     createNewRequest: createNewRequest,
     getUserRequestsById: getUserRequestsById,
-    getAllUsersRequests: getAllUsersRequests
+    getAllUsersRequests: getAllUsersRequests,
+    uploadFiles: uploadFiles
 };

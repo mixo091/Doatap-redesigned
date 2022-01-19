@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/css/log_in.css">
     <%- include ('partials/header.ejs') %>
 </head>
 <body class="log-in">
@@ -71,7 +72,11 @@
             	   </div>
             	</div>
             	<a href="#">Forgot Password?</a>
+                <!-- <a href="/register">Δημιουργία λογαριασμού</a> -->
             	<button type="submit" class="btn btn-lg btn-primary btn-block">Είσοδος</button>
+                <a href="/register" class="btn btn-success btn-sign-up" role="button" aria-disabled="true">Δημιουργία Λογαριασμού</a>
+
+            	<!-- <button type="submit" class="btn btn-lg btn-primary btn-block" color="green">Δημιουργία λογαριασμού</button> -->
             </form>
         </div>
     </div>

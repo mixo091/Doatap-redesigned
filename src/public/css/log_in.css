@@ -1,5 +1,3 @@
-
-
 *{
 	padding: 0;
 	margin: 0;
@@ -8,9 +6,9 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-	background: linear-gradient(to bottom,#0a9aad, #3e4469);
+	/* background: linear-gradient(to bottom,#0a9aad, #3e4469); */
+	background-color:	#e3e3e3;
 }
-
 
 .container1{
     width: 100vw;
@@ -18,10 +16,10 @@ body{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
-    padding: 0 2rem;
-
-    
+    padding: 0rem;   
+	background-color:	#e3e3e3;
 }
+
 
 .img{
 	display: flex;
@@ -154,14 +152,14 @@ label{
 	margin-bottom: 4px;
 }
 
-a{
+/* a{
 	display: block;
 	text-align: right;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
 	font-size: 0.9rem;
 	transition: .3s;
-}
+} */
 
 a:hover{
 	color: #38d39f;
@@ -184,12 +182,25 @@ a:hover{
 	cursor: pointer;
 	transition: .5s;
 }
+
 .btn:hover{
 	transform: scale(1.1);
 	background-image:linear-gradient(to top, #424e61, #2b6d99, #0a9aad);
 }
 
-.register{
+.btn.btn-success.btn-sign-up{
+	font-size: 1.3rem;
+	color: white;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+	background-image:none;
+	background-color: green;
+}
+
+/* .register{
 	color:thistle;
 	border-style: outset;
 	padding: 10px;
@@ -201,7 +212,9 @@ a:hover{
 	display: block;
 	z-index:10;
 	background-image:linear-gradient(to top, #424e61, #2b6d99, #0a9aad);
-}
+} */
+
+
 
 
 @media screen and (max-width: 1050px){

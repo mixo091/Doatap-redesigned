@@ -8,25 +8,11 @@
 <%- include ('partials/nav-bar.ejs') %>
 <%- include ('partials/breadcrumbs.ejs') %>
 
-
-<!-- <% if(errors!= '' && errors.length > 0){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong><%= errors %></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<% } %> -->
-
 <div class="wrapper">
     <div class="title">
         Φορμα Εγγραφης
     </div>
-   
-        <% errors.forEach((item) => { %>
-            <div class="alert alert-danger">
-                <%= item %>
-            </div>
-        <% }); %>
-    <% } %>
+
     <form class="form" method="POST" action="/register">
 
        <div class="inputfield">
@@ -53,7 +39,7 @@
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
        </div> 
       <div class="inputfield">
-        <label for="passwordConfirmation">Confirm password: (*)</label>
+        <label for="passwordConfirmation">Confirm password: (*) </label>
         <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required>
 
        </div> 
