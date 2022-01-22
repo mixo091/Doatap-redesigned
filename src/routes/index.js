@@ -15,6 +15,10 @@ router.get('/', (req,res) => {
     }
     res.render('index');
 });
+router.get('/info', (req,res) => {
+
+    res.render('info');
+});
 
 router.get('/info', (req,res) => {
     req.breadcrumbs({

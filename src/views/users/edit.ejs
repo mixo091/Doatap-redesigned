@@ -19,8 +19,16 @@
         <div class="row top-padding bottom-padding">
             <div style="width: 30%; margin: 25px auto;">
                 <h1 style="text-align: center ; font-family: 'Play' , sans-serif ; font-size: larger; color: white; margin-bottom: 5vh; ">Επεξεργασία Δεδομένων</h1>
+                <% if(user.isAdmin === 0) { %>
                 <form action="/user-menu/edit?_method=PUT" method="post" style="margin-bottom: 5vh;"
                     oninput='passwordConfirm.setCustomValidity(passwordConfirm.value != password.value ? "Passwords do not match." : "")'>
+                <% } %>
+
+                <% if(user.isAdmin === 1) { %>
+                <form action="/admin/edit?_method=PUT" method="post" style="margin-bottom: 5vh;"
+                    oninput='passwordConfirm.setCustomValidity(passwordConfirm.value != password.value ? "Passwords do not match." : "")'>
+                <% } %>
+
                     <div class="form-group">
                         <label for="input_first_name">Όνομα</label>
                         <input type="text" class="form-control" id="input_first_name" name="first_name"

@@ -19,11 +19,14 @@ let createNewUser = (data) => {
                 isAdmin: 0
             };
 
+            console.log(userItem)
+
             //create a new account
             DBConnection.query(
                 ' INSERT INTO user set ? ', userItem,
                 function(err, rows) {
                     if (err) {
+                        console.log(err)
                         reject(err)
                     }
                     resolve("Create a new user successful");

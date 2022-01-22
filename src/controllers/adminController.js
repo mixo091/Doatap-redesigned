@@ -1,15 +1,52 @@
-// const DBConnection = require('../config/dbConnection');
-// const loginService = require('../services/loginService');
+const DBConnection = require('../config/dbConnection');
+const loginService = require('../services/loginService');
 const userService = require('../services/userService');
 
 
 let getAdminProfile = (req, res) => {
     if(req.session.loggedin && req.session.currentUser.isAdmin == 1) {
         req.breadcrumbs({
-            name: 'Προφίλ',
+            name: 'Μενού',
             url: '/admin'
         })
         return res.render('users/admin', {
+            user: req.session.currentUser
+        })
+    } else {
+        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        res.redirect('/login')
+    }
+};
+
+let getAdminInfo = (req, res) => {
+    if(req.session.loggedin && req.session.currentUser.isAdmin == 1) {
+        req.breadcrumbs([{
+            name: 'Μενού',
+            url: '/admin'
+        }, {
+            name: 'Προφίλ',
+            url: '/user-info'
+        }])
+        return res.render('users/user-info', {
+            user: req.session.currentUser
+        })
+    } else {
+        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        res.redirect('/login')
+    }
+};
+
+let getEditPage = (req, res) => {
+    if(req.session.loggedin && req.session.currentUser.isAdmin == 1) {
+        req.breadcrumbs([{
+            name: 'Μενού',
+            url: '/admin'
+        }, {
+            name: 'Επεξεργασία',
+            url: '/admin/edit'
+        }
+        ])
+        return res.render('users/edit', {
             user: req.session.currentUser
         })
     } else {
@@ -67,50 +104,53 @@ let getAllRequests = async(req, res) => {
 //     }
 // };
 
-// let updateUserInfo = async(req,res) => {
-//     if (req.session.loggedin) {
-//         const {
-//             first_name,
-//             last_name,
-//             phone,
-//             email,
-//             password
-//         } = req.body
+let updateAdminInfo = async(req,res) => {
+    if (req.session.loggedin && req.session.currentUser.isAdmin == 1) {
+        const {
+            first_name,
+            last_name,
+            phone,
+            email,
+            password
+        } = req.body
 
-//         try {
-//             let match = await loginService.comparePassword(password, req.session.currentUser);
-//             if(match == false ){
-//                 req.flash('errors', 'Λάθος κωδικός')
-//                 res.redirect('/account/edit')
-//             } else {
-//                 DBConnection.query('UPDATE user SET first_name = ?, last_name = ?, phone = ?, email = ? WHERE user_id = ?', 
-//                                             [first_name, last_name, phone, email, req.session.currentUser.user_id],  
-//                 (error, result) => {
-//                     if (error) {
-//                         console.log(error)
-//                         throw error
-//                     }
-//                     req.session.currentUser.first_name = first_name
-//                     req.session.currentUser.last_name = last_name
-//                     req.session.currentUser.phone = phone
-//                     req.session.currentUser.email = email
-//                     // req.session.currentUser.password = password
-//                     console.log('result => ', result)
-//                     req.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
-//                     res.redirect('/account');
-//                 })
-//             }
-//         } catch (err) {
-//             console.log(err);
-//             res.send(err);
-//         }
-//     } else {
-//         req.flash('errors', 'Απαγορεύεται η πρόσβαση')
-//         res.redirect('/login')
-//     }
-// };
+        try {
+            let match = await loginService.comparePassword(password, req.session.currentUser);
+            if(match == false ){
+                req.flash('errors', 'Λάθος κωδικός')
+                res.redirect('/admin/edit')
+            } else {
+                DBConnection.query('UPDATE user SET first_name = ?, last_name = ?, phone = ?, email = ? WHERE user_id = ?', 
+                                            [first_name, last_name, phone, email, req.session.currentUser.user_id],  
+                (error, result) => {
+                    if (error) {
+                        console.log(error)
+                        throw error
+                    }
+                    req.session.currentUser.first_name = first_name
+                    req.session.currentUser.last_name = last_name
+                    req.session.currentUser.phone = phone
+                    req.session.currentUser.email = email
+                    // req.session.currentUser.password = password
+                    console.log('result => ', result)
+                    req.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
+                    res.redirect('/admin');
+                })
+            }
+        } catch (err) {
+            console.log(err);
+            res.send(err);
+        }
+    } else {
+        req.flash('errors', 'Απαγορεύεται η πρόσβαση')
+        res.redirect('/login')
+    }
+};
 
 module.exports = {
     getAdminProfile: getAdminProfile,
-    getAllRequests: getAllRequests
+    getAllRequests: getAllRequests,
+    getAdminInfo: getAdminInfo,
+    getEditPage: getEditPage,
+    updateAdminInfo: updateAdminInfo
 }
