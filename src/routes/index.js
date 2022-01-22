@@ -15,6 +15,10 @@ router.get('/', (req,res) => {
     }
     res.render('index');
 });
+router.get('/info', (req,res) => {
+
+    res.render('info');
+});
 
 router.get("/login", loginController.checkLoggedOut, loginController.getPageLogin);
 router.get("/register", registerController.getPageRegister);

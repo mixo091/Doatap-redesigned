@@ -131,16 +131,28 @@ let createNewRequest = async(req,res) => {
         user_id: req.session.currentUser.user_id,
         country: req.body.country,
         university: req.body.university,
-        certificate: req.body.certificate,
-        recognition: req.body.recognition
+        department: req.body.department,
+        title: req.body.title,
+        ects: req.body.ects,
+        duration: req.body.duration,
+        parabola_file: req.body.parabolo,
+        id_file: req.body.id,
+        diploma_file: req.body.diploma
     };
 
-    req.session.request = newRequest;
+    if(newRequest.user_id === '' || newRequest.country === '' || newRequest.university === '' || 
+        newRequest.department === '' || newRequest.title === '' || newRequest.ects === '' || newRequest.duration === '' ||
+        newRequest.parabola_file=== '' || newRequest.id_file === '' || newRequest.diploma_file === '' ) {
+            console.log('κάτι δεν πάει καλά')
+            return res.send('δεν μπορείς να στείλεις την αίτηση')
+        }
+    
+    console.log(newRequest)
     
     try {
         await userService.createNewRequest(newRequest);
 
-        return res.redirect("/user-menu");
+        return res.redirect("/user-menu/user-requests");        
     } catch (err) {
         req.flash("errors", err);
         // return res.redirect("/login");

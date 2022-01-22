@@ -20,6 +20,7 @@ let createNewUser = async(req,res) => {
          errors.forEach((item) => {
              errorsArr.push(item.msg);
          });
+         console.log(errorsArr)
          req.flash("errors", errorsArr);
          return res.redirect("/register");
      }

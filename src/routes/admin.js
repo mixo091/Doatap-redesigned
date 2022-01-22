@@ -6,5 +6,10 @@ const adminController = require('../controllers/adminController');
 
 router.get('/', adminController.getAdminProfile)
 router.get('/all-requests', adminController.getAllRequests)
+router.get('/user-info', adminController.getAdminInfo)
+router.get('/edit', adminController.getEditPage)
+
+router.put('/edit', adminController.updateAdminInfo)
+
 
 module.exports = router;

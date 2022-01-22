@@ -19,13 +19,15 @@
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-breadcrumbs": "0.0.2",
+    "express-fileupload": "^1.2.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.5.0",
     "method-override": "^3.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "store2": "^2.13.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",

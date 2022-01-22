@@ -7,10 +7,13 @@ let createNewRequest = (data) => {
             user_id: data.user_id,
             country: data.country,
             university: data.university,
-            certificate: data.certificate,
-            recognition: data.recognition,
-            id_file: '',
-            diploma_file: ''
+            department: data.department,
+            title: data.title,
+            ects: data.ects,
+            study_duration: data.duration,
+            parabola_file: data.parabola_file,
+            id_file: data.id_file,
+            diploma_file: data.diploma_file
         };
 
         console.log(reqItem)
