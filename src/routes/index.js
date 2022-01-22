@@ -16,6 +16,17 @@ router.get('/', (req,res) => {
     res.render('index');
 });
 
+router.get('/info', (req,res) => {
+    req.breadcrumbs({
+        name: 'info',
+        url: '/info'
+    })
+    res.render('info', {
+        errors: req.flash("errors")
+    });
+});
+
+
 router.get("/login", loginController.checkLoggedOut, loginController.getPageLogin);
 router.get("/register", registerController.getPageRegister);
 router.get("/logout", loginController.postLogOut)
