@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    box-sizing:border-box;
+	font-family: 'Barlow', sans-serif;
+}
+
+.main-page{
+    height: 110vh;
+    background-color:	#e3e3e3;
+}
+
+
+.shortcut-menu {
+    margin-top: 2vh;
+    float: left;
+    width: 25%;
+    text-align: center;
+    background-color:	#e3e3e3;
+    height: 52vh;
+  }
+  
+.shortcut-menu .shortcut-link {
+    background-color: #c7c7c7;
+    padding: 8px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    font-family: 'Play' ,sans-serif;
+    font-size: 18px;
+    height: 13vh;
+    cursor: pointer;
+    color: black;
+    border-radius: 8px;
+    border-bottom: 2px solid rgb(90, 90, 90);
+    
+  }
+
+  .shortcut-menu .shortcut-link:hover{
+      transform: scale(1.1);
+  }
+
+
+.main-content {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    height: 60vh;
+ 
+    background-color: 	#e3e3e3;
+  }
+  
+.Anouncements {
+    background-color:	#e3e3e3;
+    float: left;
+    width: 25%;
+    
+    margin-bottom: 2vh;
+    text-align: center;
+    height: 60vh;
+    border-radius: 4px;;
+  }
+.Anouncements-title{
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Play' , sans-serif;
+    border-bottom: 1px solid rgb(85, 187, 235);
+}
+
+
+.Anouncement{
+    padding:10px;
+    margin:10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border-radius: 6px;
+    
+}
+
+.Anouncement:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+
+.main-title{
+
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;  
+    font-family: 'Play' , sans-serif;
+    padding-top:50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    
+}
+
+
+.a-head{
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    margin-top:6px;
+    
+}
+
+.a-body{
+    padding-bottom: 6px;
+}
+
+
+.anagnwrish{
+    height: 100%;
+    border-radius: 6px;
+    font-family: 'Play' ,sans-serif;
+    
+}
+
+
+.efarmogh{
+    padding-top: 5vh;
+    text-align: center;
+    font-size: 20px;
+    height: 60%;
+    font-family: 'Play' ,sans-serif;
+    padding-right: 8vh;
+    padding-left: 8vh;
+    border-bottom: solid 1px black;
+
+
+}
+
+.anagnwrish-info{
+    padding-top: 5vh;
+    text-align: center;
+    font-size: 20px;
+    height: 40%;
+    font-family: 'Play' ,sans-serif;
+  
+    padding-right: 8vh;
+    padding-left: 8vh;
+    
+}
+
+.learn-more{
+    display: inline - block;
+    border-radius: 8px;
+	box-shadow: 2px 2px 2px rgb(177, 177, 177);
+	border-color: rgb(85, 187, 235);
+	color:rgb(0, 0, 0);
+	text-align: center;
+	font-weight: normal;
+	margin: 8px 6px;
+	padding:8px;
+    font-size: 20px;
+    font-family: 'Play',sans-serif;
+	transition-duration: 0.4s;
+	cursor: pointer;
+    background-color: rgb(179, 179, 179);
+    margin: 2vh;
+   
+    
+
+}
+
+.learn-more:hover{
+
+    transform: scale(1.2);
+}
+
+.e-doatap-btn{
+    border-radius: 12px;
+	box-shadow: 2px 2px 2px rgb(177, 177, 177);
+	border-color: rgb(85, 187, 235);
+	color:lightgray;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bolder;
+	margin: 6px 2px;
+	padding:5px;
+    font-size: 24px;
+	transition-duration: 0.4s;
+    margin-top: 3vh;
+	cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    display: inline-block;
+    margin: 3vh;
+}
+
+.e-doatap-btn:hover{
+    transform: scale(1.2);
+}
+
+
+.logo-btn{
+    height:50px;
+    width: 150px;
+}
+
+.anagnwrish-title{
+    font-size: 28px;
+    font-weight: bolder;
+    font-style: oblique;
+    padding-top: 18vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    text-align:center;
+    font-family: 'Play', sans-serif;
+}
+
+.anakoinwseis-title{
+    font-size: 20px;
+    font-weight: normal;
+    font-style:italic;
+    color:rgb(85, 187, 235);
+    padding-top: 15vh;
+    padding-left: 8vh;
+    padding-right: 8vh;
+    text-align:center;
+    font-family: 'Play', sans-serif;
+  
+}
+
+
+
+
+/* ---- Dividers --- */
+
+.divider
+{
+	position: relative;
+	margin-top: 25px;
+	height: 1px;
+}
+
+.dark{
+    margin-top: 8px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+
+.div-transparent-dark:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 2px;
+    background-image: linear-gradient(to right, transparent, rgb(0, 0, 0), transparent);
+}
+
+.div-arrow-down:after
+{
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: -7px;
+	left: calc(50% - 7px);
+	width: 14px;
+	height: 14px;
+	transform: rotate(45deg);
+    background-color:rgb(179, 179, 179); 
+	border-bottom: 1px solid rgb(48,49,51);
+	border-right: 1px solid rgb(48,49,51);
+}
+
+
+
+
+/* -------------- ShortCuts -2 ---------------------- */
+.shortcuts-2{
+    display:flex;
+    width:100%;
+    height: 50vh;
+    background-color:rgb(179, 179, 179);
+    padding:2%;
+}
+
+.sub-shortcut{
+    margin:2%;
+    border-radius: 8px;
+    width:30%;
+    height:40vh;
+    background-color:inherit;
+    border-style:solid;
+    border-width: 2px;
+    border-top:none;
+    border-left-color: black;
+    border-right-color: black;  
+    border-bottom:none;
+}
+
+.sub-shortcut:hover{
+    transform:scale(1.1);
+    cursor: pointer;    
+}
+
+.sub-shortcut-title{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.sub-shortcut-info{
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    
+}
+
+
+
+/* alert */
+.alert-primary {
+	color: green;
+	background-color: #69beff;
+	border-color: #54b5ff;
+}
+
+.alert-primary hr {
+	border-top-color: #3baaff;
+}
+
+.alert-primary .alert-link {
+	color: lightgray;
+}
+
+.alert .alert-success {
+    color: green;
+	background-color: #69beff;
+	border-color: #54b5ff;
+}
+
+
+  @media only screen and (max-width: 800px) {
+    /* For mobile phones: */
+    .shortcut-menu, .main-content, .Anouncements {
+      width: 100%;
+    }
+  }

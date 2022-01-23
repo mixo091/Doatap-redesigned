@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include ('../partials/header.ejs') %>
+    <script src="js/nav-script.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!-- <link rel="stylesheet" href="/css/request.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+      .alert {
+        padding: 20px;
+        background-color: red;
+        color: white;
+      }
+
+      .alert.alert-info {
+        padding: 20px;
+        background-color: blue;
+        color: white;
+      }
+
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .closebtn:hover {
+        color: black;
+      }
+    </style>
+</head>
+
+<body>
+  <%- include ('../partials/nav-bar.ejs') %>
+    <%- include ('../partials/breadcrumbs.ejs') %>
+      <% if (errors && errors.length> 0) { %>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <span class="error-msg">
+            <%= errors %>
+          </span>
+        </div>
+        <% } %>
+
+          <div id="alertBox" class="alert alert-info" style="display:none;"><button type="button" class="close"
+              data-dismiss="alert" aria-hidden="true">&times;</button><span class="alertMessage"></span></div>
+
+          <!-- <a class="btn gray mini mr5" id="item-publish">
+        <span class="glyphicon glyphicon-globe"></span>
+        Publish
+      </a> -->
+
+          <form action="/user-menu/request" method="post" class="form">
+            <!-- Progress bar -->
+            <div class="progressbar">
+              <div class="progress" id="progress"></div>
+
+              <!-- <div class="progress-step progress-step-active" data-title="Τίτλος σπουδών"></div> -->
+              <div class="progress-step progress-step-active" data-title="Συνεκτίμηση τίτλου"></div>
+              <div class="progress-step" data-title="Επισύναψη αρχείων"></div>
+            </div>
+            <div class="form-step form-step-active">
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Χώρα Σπουδών</label>
+                <input type="text" name="country" class="form-control" id="country" placeholder="Χώρα" required>
+              </div>
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Πανεπιστήμιο</label>
+                <input type="text" name="university"  class="form-control" id="university"
+                  placeholder="Πανεμιστήμιο φοίτησης">
+              </div>
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Σχολή</label>
+                <input type="text" name="department" class="form-control" id="department" placeholder="Σχολή φοίτησης"
+                  required>
+              </div>
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Τίτλος Σπουδών</label>
+                <input type="text" name="title" class="form-control" id="title" required>
+              </div>
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Πιστωτικές Μονάδες</label>
+                <input type="text" name="ects" class="form-control" id="ects" required>
+              </div>
+              <div class="input-group">
+                <label for="inputAddress2" class="form-label">Διάρκεια Σπουδών</label>
+                <input type="text" name="duration" class="form-control" id="duration" placeholder="Έτη" required>
+              </div>
+              <hr>
+              <div class="btns-group">
+                <a href="#" class="btn btn-next">Next</a>
+                <div class="col-12">
+                  <button class="btn btn-primary" id="temp-save">Προσωρινή αποθήκευση</button>
+                </div>
+                <div class="col-10">
+                  <button type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-step">
+              <div class="col-12">
+                <label for="inputEmail4" class="form-label">ΠΑΡΑΒΟΛΟ</label>
+                <input type="file" id="parabolo" name="parabolo" accept="image/*" />
+              </div>
+              <div class="col-12">
+                <label for="inputEmail4" class="form-label">ΤΑΥΤΟΤΗΤΑ</label>
+                <input type="file" id="passport" name="id" accept="image/*" />
+              </div>
+              <div class="col-12">
+                <label for="inputEmail4" class="form-label">ΠΤΥΧΙΟ</label>
+                <input type="file" id="ptyxio" name="diploma" accept="image/*" />
+              </div>
+
+              <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <div class="col-12">
+                  <button class="btn btn-primary" id="temp-save">Προσωρινή αποθήκευση</button>
+                </div>
+                <div class="col-10">
+                  <button type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <%- include ('../partials/footer.ejs') %>
+
+            <script>
+              function bootstrap_alert(elem, message, timeout) {
+
+                $(elem + " .alertMessage").text(message)
+                $(elem).show().alert()
+
+                if (timeout || timeout === 0) {
+                  setTimeout(function () {
+                    $(elem).hide();
+                  }, timeout);
+                }
+              };
+
+
+              const prevBtns = document.querySelectorAll(".btn-prev");
+              const nextBtns = document.querySelectorAll(".btn-next");
+              const progress = document.getElementById("progress");
+              const formSteps = document.querySelectorAll(".form-step");
+              const progressSteps = document.querySelectorAll(".progress-step");
+
+              let formStepsNum = 0;
+
+              nextBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  formStepsNum++;
+                  updateFormSteps();
+                  updateProgressbar();
+                });
+              });
+
+              prevBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  formStepsNum--;
+                  updateFormSteps();
+                  updateProgressbar();
+                });
+              });
+
+              function updateFormSteps() {
+                formSteps.forEach((formStep) => {
+                  formStep.classList.contains("form-step-active") &&
+                    formStep.classList.remove("form-step-active");
+                });
+
+                formSteps[formStepsNum].classList.add("form-step-active");
+              }
+
+              function updateProgressbar() {
+                progressSteps.forEach((progressStep, idx) => {
+                  if (idx < formStepsNum + 1) {
+                    progressStep.classList.add("progress-step-active");
+                  } else {
+                    progressStep.classList.remove("progress-step-active");
+                  }
+                });
+
+                const progressActive = document.querySelectorAll(".progress-step-active");
+
+                progress.style.width =
+                  ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+              }
+
+              // temp save with localStorage
+              let request = {
+                country: "",
+                university: "",
+                department: "",
+                title: "",
+                ects: "",
+                duration: ""
+              }
+
+              const countryId = document.getElementById("country")
+              const universityId = document.getElementById("university")
+              const departmentId = document.getElementById("department")
+              const titleId = document.getElementById("title")
+              const ectsId = document.getElementById("ects")
+              const durationId = document.getElementById("duration")
+
+              const tempSave = document.getElementById("temp-save")
+
+              tempSave.onclick = function () {
+                event.preventDefault()
+
+                const countryValue = countryId.value;
+                const universityValue = universityId.value;
+                const departmentValue = departmentId.value;
+                const titleValue = titleId.value;
+                const ectsValue = ectsId.value;
+                const durationValue = durationId.value;
+
+                request.country = countryValue
+                request.university = universityValue
+                request.department = departmentValue
+                request.title = titleValue
+                request.ects = ectsValue
+                request.duration = durationValue
+
+                localStorage.setItem('req', request);
+
+
+                bootstrap_alert('#alertBox', 'Η αίτησή σου αποθηκεύτηκε προσωρινά. Για να ολοκληρώσεις την αίτηση επισύναψε όλα τα απαραίτητα έγγραφα στο επόμενο βήμα.', 10000)
+              };
+
+              window.onload = function () {
+
+                let profile = localStorage.getItem('request')
+                let profileObj = JSON.parse(profile)
+
+                console.log(profileObj)
+
+                if (profileObj !== null) {
+
+                  if (profileObj.country != "") $('#country').val(profileObj.country);
+                  if (profileObj.university != "") $('#university').val(profileObj.university);
+                  if (profileObj.department != "") $('#department').val(profileObj.department);
+                  if (profileObj.title != "") $('#title').val(profileObj.title);
+                  if (profileObj.ects != "") $('#ects').val(profileObj.ects);
+                  if (profileObj.duration != "") $('#duration').val(profileObj.duration);
+                }
+              }
+
+              // const finalSubmit = document.getElementById('final-submit');
+              // finalSubmit.onclick = function () {
+              //   localStorage.clear()
+              // };
+            </script>
+</body>
+
+</html>

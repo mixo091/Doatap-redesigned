@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/log_in.css">
+    <%- include ('partials/header.ejs') %>
+    <style>
+        .alert {
+    padding: 20px;
+    background-color: green;
+    color: white;
+  }
+
+  .alert.alert-danger {
+    padding: 20px;
+    background-color: red;
+    color: white;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 30px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+    </style>
+</head>
+<body class="log-in">
+<%- include ('partials/nav-bar.ejs') %>
+<%- include ('partials/breadcrumbs.ejs') %>
+
+<div class="flashes">
+  <% if (flashMessages) { %>
+    <% if (flashMessages.success) { %>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= flashMessages.success %>
+      </div>
+    <% } else if (flashMessages.error) { %>
+      <div class="alert alert-danger">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= flashMessages.error %>
+      </div>
+    <% } %>
+  <% } %>
+</div>
+
+
+
+<!-- <% if(errors && errors.length > 0){ %>
+  <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <span class="error-msg">
+        <%= errors %>
+      </span>
+    </div>
+  <% } %>
+
+<% if(success && success.length> 0){ %>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <span class="error-msg">
+          <%= success %>
+        </span>
+      </div>
+    <% } %> -->
+
+<div class="container1">
+		<div class="img">
+			<img src="/images/Edu.svg">
+		</div>
+		<div class="login-content">
+			<form action="/login" method="POST">
+				<img src="/images/user.svg">
+				<h2 class="title" style="font-family: 'Play' , sans-serif;"> Καλωσήρθες</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<input type="email" class="input" class="form-control" id="input_email" name="email" placeholder="john@doe.com" required>
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<input type="password" class="input" class="form-control" id="input_email" name="password" placeholder="Κωδικός πρόσβασης" required>
+            	   </div>
+            	</div>
+            	<a href="#">Forgot Password?</a>
+                <!-- <a href="/register">Δημιουργία λογαριασμού</a> -->
+            	<button type="submit" class="btn btn-lg btn-primary btn-block">Είσοδος</button>
+                <a href="/register" class="btn btn-success btn-sign-up" role="button" aria-disabled="true">Δημιουργία Λογαριασμού</a>
+
+            	<!-- <button type="submit" class="btn btn-lg btn-primary btn-block" color="green">Δημιουργία λογαριασμού</button> -->
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+	<%- include ('partials/footer.ejs') %>
+	
+  
+</body>
+</html>
