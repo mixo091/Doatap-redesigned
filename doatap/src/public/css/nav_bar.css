@@ -1,0 +1,96 @@
+.nav-button{
+	border-radius: 6px;
+	box-shadow: 4px 4px 4px rgb(41, 41, 41);
+	background-color: rgb(29, 29, 29);
+    font-family: 'Play' , sans-serif ;
+	text-align: center;
+	font-size: 14px;
+	font-weight:normal;
+	margin: 4px 2px;
+	padding:5px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.nav-button:hover {
+	background-color: rgb(29, 29, 29);
+	color: rgb(255, 255, 255);
+	transform: scale(1.2);
+	text-decoration: none;
+}
+
+
+.search-input {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    font-size: 16px;
+    padding:4px;
+	border-radius: 8px;
+	background-color: rgb(29, 29, 29);
+    margin-right: 5px;
+	
+
+}
+
+.search-button {
+    color: rgb(255, 255, 255);
+    width: 30px;
+    height: 30px;
+	border-color:  rgb(85, 187, 235);
+    border-radius: 50%;
+    background-color: rgb(29, 29, 29);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin-left: 25px;
+    margin-right: 25px;
+}
+
+
+.nav-link{
+	font-family: 'Play' , sans-serif;
+	font-size: 22px;
+	color:  rgb(17, 17, 17);
+	border-radius: 12px;
+
+}
+
+.nav-link:hover{
+	background-color: rgb(255, 255, 255);
+}
+
+.btnn{
+	display: inline-block;
+	font-size:16px;
+	font-family: 'Play' , sans-serif;
+	padding:10px 25px;
+	margin: 0 20px;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px rgb(68, 91, 109);
+	margin-top:4vh;
+}
+
+.btnn:hover{
+	text-decoration: none;
+}
+
+
+.prof-btn{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	margin-right: 0;
+	text-align: center;
+	font-family: 'Play' , sans-serif;
+	font-size: 16px;
+	border:none;
+	background-color: wheat;
+	color:black;
+	
+}
+
+.prof-btn:hover{
+	transform: scale(1.1);
+}

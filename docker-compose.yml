@@ -1,0 +1,46 @@
+version: '3.5'
+services:
+  db:
+    build: ./doatap/db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: users
+    restart: always
+  web:
+    build: ./doatap
+    environment:
+      MYSQL_DATABASE: users
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: db
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: on-failure
+  
+
+# volumes:
+#   db:
+      
+
+# version: "3.8"
+# services:
+#   db:
+#     build: ./db
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_DATABASE: users
+#     restart: always
+#   web:
+#     build: ./doatap
+#     environment:
+#       MYSQL_DATABASE: users
+#       MYSQL_USER: root
+#       MYSQL_PASSWORD: root
+#       MYSQL_HOST: db
+#     ports:
+#       - "8080:8080"
+#     depends_on:
+#       - db
+#     restart: on-failure
