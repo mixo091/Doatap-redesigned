@@ -49,10 +49,12 @@ app.use((request, response, next) => {
     response.locals.request = request.session.request
     response.locals.success = request.flash("success")
     response.locals.errors = request.flash("errors")
-    response.locals.message = request.session.message
+    response.locals.flashMessages = request.flash();
     response.locals.breadcrumbs = request.breadcrumbs()
     next()
 })
+
+  
 
 //Config passport middleware
 app.use(passport.initialize());

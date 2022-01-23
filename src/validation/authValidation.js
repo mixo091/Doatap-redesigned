@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 
 let validateRegister = [
-    check("email", "Invalid email").isEmail().trim(),
+    check("email", "Το email που καταχωρήσατε είναι λάθος").isEmail().trim(),
 
     check("password", "Invalid password. Password must be at least 2 chars long")
     .isLength({ min: 2 }),

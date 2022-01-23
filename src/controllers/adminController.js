@@ -13,7 +13,7 @@ let getAdminProfile = (req, res) => {
             user: req.session.currentUser
         })
     } else {
-        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        req.flash('error', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
         res.redirect('/login')
     }
 };
@@ -25,13 +25,13 @@ let getAdminInfo = (req, res) => {
             url: '/admin'
         }, {
             name: 'Προφίλ',
-            url: '/user-info'
+            url: '/admin/user-info'
         }])
         return res.render('users/user-info', {
             user: req.session.currentUser
         })
     } else {
-        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        req.flash('error', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
         res.redirect('/login')
     }
 };
@@ -50,7 +50,7 @@ let getEditPage = (req, res) => {
             user: req.session.currentUser
         })
     } else {
-        req.flash('errors', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
+        req.flash('error', 'Χρειάζεται να είστε συνδεδεμένοι για αυτήν την ενέργεια')
         res.redirect('/login')
     }
 };
@@ -58,11 +58,11 @@ let getEditPage = (req, res) => {
 let getAllRequests = async(req, res) => {
     if(req.session.loggedin && req.session.currentUser.isAdmin == 1) {
         req.breadcrumbs([{
-            name: 'Προφίλ',
+            name: 'Μενού',
             url: '/admin'
         }, {
             name: 'Αιτήσεις',
-            url: '/all-requests'
+            url: '/admin/all-requests'
         }])
 
         try {
@@ -70,7 +70,7 @@ let getAllRequests = async(req, res) => {
 
             const result = Object.values(JSON.parse(JSON.stringify(rows)));
 
-            return res.render('users/admin', 
+            return res.render('users/all-requests', 
             { 
                 result, 
                 user: req.session.currentUser 
@@ -117,7 +117,7 @@ let updateAdminInfo = async(req,res) => {
         try {
             let match = await loginService.comparePassword(password, req.session.currentUser);
             if(match == false ){
-                req.flash('errors', 'Λάθος κωδικός')
+                req.flash('error', 'Ο κωδικός που πληκτρολογήσατε είναι λανθασμένος')
                 res.redirect('/admin/edit')
             } else {
                 DBConnection.query('UPDATE user SET first_name = ?, last_name = ?, phone = ?, email = ? WHERE user_id = ?', 
@@ -132,18 +132,18 @@ let updateAdminInfo = async(req,res) => {
                     req.session.currentUser.phone = phone
                     req.session.currentUser.email = email
                     // req.session.currentUser.password = password
-                    console.log('result => ', result)
-                    req.flash('success', 'Ενημέρωση στοιχείων επιτυχής')
-                    res.redirect('/admin');
+                    // console.log('result => ', result)
+                    req.flash('success', 'Τα στοιχεία σας ενημερώθηκαν με επιτυχία')
+                    return res.redirect('/admin');
                 })
             }
         } catch (err) {
-            console.log(err);
-            res.send(err);
+            req.flash('error', 'Ο κωδικός που πληκτρολογήσατε είναι λανθασμένος')
+            return res.redirect('/admin/edit')
         }
     } else {
-        req.flash('errors', 'Απαγορεύεται η πρόσβαση')
-        res.redirect('/login')
+        req.flash('error', 'Απαγορεύεται η πρόσβαση')
+        return res.redirect('/login')
     }
 };
 

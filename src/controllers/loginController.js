@@ -11,7 +11,7 @@ let getPageLogin = (req, res) => {
     });
 };
 
-let handleLogin = async(req,res) => {
+let handleLogin = async (req, res) => {
     let errorsArr = [];
     let validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
@@ -33,58 +33,56 @@ let handleLogin = async(req,res) => {
     }
 };
 
-let createLogin = async(req, res) => {
+let createLogin = async (req, res) => {
     const {
         email,
         password,
         isAdmin
     } = req.body;
 
-    let errorsArr = [];
-    let validationErrors = validationResult(req);
-    if (!validationErrors.isEmpty()) {
-        let errors = Object.values(validationErrors.mapped());
-        errors.forEach((item) => {
-            errorsArr.push(item.msg);
-        });
-        console.log(errorsArr)
-        req.flash("errors", errorsArr);
-        return res.redirect("/login");
-    }
-
+    // let errorsArr = [];
+    // let validationErrors = validationResult(req);
+    // if (!validationErrors.isEmpty()) {
+    //     let errors = Object.values(validationErrors.mapped());
+    //     errors.forEach((item) => {
+    //         errorsArr.push(item.msg);
+    //     });
+    //     console.log(errorsArr)
+    //     req.flash("error", errorsArr);
+    //     return res.redirect("/login");
+    // }
+    
     try {
         await loginService.findUserByEmail(email).then(async (user) => {
-            if(user) {
-                let match = await loginService.comparePassword(password, user);
-                if(match == true) {
-                    req.session.loggedin = true;
-                     // let's check if an admin
-                     req.session.currentUser = user
-                     console.log("req.session.currentUser => ", req.session.currentUser)
-                     // response.redirect('/account')
-                     if (user.isAdmin == 1) {
-                         return res.redirect('/admin')
-                     } else {
-                         res.redirect('/user-menu')
-                     }
-                } else {
-                    req.session.message = {
-                        type: 'danger',
-                        intro: 'Τα στοιχεία που καταχωρήσατε είναι λανθασμένα',
-                        message: 'Παρακαλώ ξαναπροσπαθήστε'
+            if (user) {
+                try {
+                    let match = await loginService.comparePassword(password, user);
+                    if (match) {
+                        req.session.loggedin = true;
+                        // let's check if an admin
+                        req.session.currentUser = user
+                        console.log("req.session.currentUser => ", req.session.currentUser)
+                        // response.redirect('/account')
+                        if (user.isAdmin == 1) {
+                            return res.redirect('/admin')
+                        } else {
+                            return res.redirect('/user-menu')
+                        }
                     }
-                    // req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
-                    res.redirect("/login")
+                } catch (error) {
+                    req.flash("error", "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
+                    return res.redirect("/login")
                 }
             } else {
-                // req.flash('errors', "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
-                res.redirect("/login")
+                req.flash("error", "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
+                return res.redirect("/login")
             }
         })
     } catch (err) {
         console.log(err)
-        res.send(err)
-    }
+        req.flash("error", "Τα στοιχεία που καταχωρήσατε είναι λανθασμένα")
+        return res.redirect("/login")
+    };
 };
 
 let checkLoggedIn = (req, res, next) => {

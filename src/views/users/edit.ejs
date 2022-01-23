@@ -3,18 +3,57 @@
 
 <head>
     <%- include ('../partials/header.ejs') %>
+    <style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+      }
+      
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      .closebtn:hover {
+        color: black;
+      }
+      </style>
 </head>
 
 <body>
-    <!-- <div class="container">
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
-    </div> -->
     <%- include ('../partials/nav-bar.ejs') %>
     <%- include ('../partials/breadcrumbs.ejs') %>
+    <!-- <div class="container">
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <%=errors %>
+        </div>
+        <% } %>
+        
+    </div> -->
+    <div class="flashes">
+        <% if (flashMessages) { %>
+          <% if (flashMessages.success) { %>
+            <div class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <%= flashMessages.success %>
+            </div>
+          <% } else if (flashMessages.error) { %>
+            <div class="alert alert-danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <%= flashMessages.error %>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
 
         <div class="row top-padding bottom-padding">
             <div style="width: 30%; margin: 25px auto;">

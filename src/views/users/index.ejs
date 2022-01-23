@@ -4,10 +4,38 @@
     <%- include ('../partials/header.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/nav-script.js"></script>
+    <style>
+    .alert {
+      padding: 20px;
+      background-color: green;
+      color: white;
+    }
+    
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
 </head>
 <body>
     <%- include ('../partials/nav-bar.ejs') %>
     <%- include ('../partials/breadcrumbs.ejs') %>
+    <% if (success && success.length > 0) { %>
+      <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <%= success %>
+      </div>
+  <% } %>
 
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">

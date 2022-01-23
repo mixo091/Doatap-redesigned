@@ -21,7 +21,7 @@ let createNewUser = async(req,res) => {
              errorsArr.push(item.msg);
          });
          console.log(errorsArr)
-         req.flash("errors", errorsArr);
+         req.flash('errors', errorsArr);
          return res.redirect("/register");
      }
  
@@ -33,14 +33,15 @@ let createNewUser = async(req,res) => {
          email: req.body.email,
          password: req.body.password
      };
+
      try {
          let message = await registerService.createNewUser(newUser);
          console.log(message)
-         req.flash('success', 'Ο λογαριασμός σας δημιουργήθηκε επιτυχώς!')
+         req.flash('success', 'Τα στοιχεία σας ενημερώθηκαν με επιτυχία')
          return res.redirect("/login");
      } catch (err) {
          console.log(err)
-         req.flash("errors", err);
+         req.flash('error', 'Αυτό το email χρησιμοποιείται ήδη');
          return res.redirect("/register");
      }
 };

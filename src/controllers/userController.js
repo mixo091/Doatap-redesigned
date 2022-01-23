@@ -44,8 +44,23 @@ let getNewRequestPage = (req, res) => {
             name: 'Νέα Αίτηση',
             url: '/user-menu/request'
         }])
+        let newRequest = {
+            user_id: req.session.currentUser.user_id,
+            country: '',
+            university: '',
+            department: '',
+            title: '',
+            ects: '',
+            duration: '',
+            parabola_file: '',
+            id_file: '',
+            diploma_file: ''
+        };
+
+
         return res.render('users/request', {
-            user: req.session.currentUser
+            user: req.session.currentUser,
+            newRequest
         })
     } else {
         req.flash('errors', 'Απαγορεύεται η πρόσβαση')
@@ -106,7 +121,8 @@ let updateUserInfo = async(req,res) => {
             }
         } catch (err) {
             console.log(err);
-            res.send(err);
+            req.flash('errors', 'Ο κωδικός που πληκτρολογήσατε είναι λανθασμένος')
+            res.redirect('/user-menu/edit')
         }
     } else {
         req.flash('errors', 'Απαγορεύεται η πρόσβαση')
@@ -143,12 +159,14 @@ let createNewRequest = async(req,res) => {
     if(newRequest.user_id === '' || newRequest.country === '' || newRequest.university === '' || 
         newRequest.department === '' || newRequest.title === '' || newRequest.ects === '' || newRequest.duration === '' ||
         newRequest.parabola_file=== '' || newRequest.id_file === '' || newRequest.diploma_file === '' ) {
-            console.log('κάτι δεν πάει καλά')
-            return res.send('δεν μπορείς να στείλεις την αίτηση')
+            req.flash('errors', 'Δεν έχεις ολοκληρώσει την συμπλήρωση των πεδίων ή δεν έχεις ανεβάσει όσα αρχεία χρειάζεται. Ξαναπροσπάθησε')
+            req.flash('msg',  'Η αίτησή σου αποθηκεύτηκε προσωρινά')
+            // return res.redirect('/user-menu/request')
+            return res.render('users/request', { newRequest})
+            // return res.json(newRequest)
+            // return res.json({"status": 200, "message": "POST recieved"});
         }
-    
-    console.log(newRequest)
-    
+        
     try {
         await userService.createNewRequest(newRequest);
 

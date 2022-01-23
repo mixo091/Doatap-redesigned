@@ -3,10 +3,55 @@
 <head>
     <%- include ('partials/header.ejs') %>
     <link rel="stylesheet" href="/css/register.css">
+    <style>
+        .alert {
+    padding: 20px;
+    background-color: red;
+    color: white;
+  }
+
+  .alert.alert-info {
+    padding: 20px;
+    background-color: blue;
+    color: white;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 30px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+    </style>
 </head>
 <body>
 <%- include ('partials/nav-bar.ejs') %>
 <%- include ('partials/breadcrumbs.ejs') %>
+
+<div class="flashes">
+  <% if (flashMessages) { %>
+    <% if (flashMessages.success) { %>
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= flashMessages.success %>
+      </div>
+    <% } else if (flashMessages.error) { %>
+      <div class="alert alert-danger">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= flashMessages.error %>
+      </div>
+    <% } %>
+  <% } %>
+</div>
+
 
 <div class="wrapper">
     <div class="title">
@@ -25,7 +70,7 @@
        </div>  
        <div class="inputfield">
         <label for="phone">Τηλέφωνο:</label>
-        <input type="text" class="form-control" minlength="10" maxlength="10 name="phone" id="phone" placeholder="Τηλέφωνο">
+        <input type="text" class="form-control" minlength="10" maxlength="10" name="phone" id="phone" placeholder="Τηλέφωνο" required>
        </div>  
       <div class="inputfield">
         <label for="email">Email address: (*)</label>
@@ -47,9 +92,6 @@
 
     </form>
 </div>
-
-
 <%- include ('partials/footer.ejs') %>
-
 </body>
 </html>

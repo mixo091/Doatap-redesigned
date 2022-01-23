@@ -3,11 +3,55 @@
 
 <head>
     <%- include ('../partials/header.ejs') %>
+    <style>
+      .alert {
+  padding: 20px;
+  background-color: green;
+  color: white;
+}
+
+.alert.alert-danger {
+  padding: 20px;
+  background-color: red;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 30px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+  </style>
 </head>
 
 <body>
     <%- include ('../partials/nav-bar.ejs') %>
         <%- include ('../partials/breadcrumbs.ejs') %>
+        
+        <div class="flashes">
+          <% if (flashMessages) { %>
+            <% if (flashMessages.success) { %>
+              <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <%= flashMessages.success %>
+              </div>
+            <% } else if (flashMessages.error) { %>
+              <div class="alert alert-danger">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <%= flashMessages.error %>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">

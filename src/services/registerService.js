@@ -6,7 +6,7 @@ let createNewUser = (data) => {
         // check email is exist or not
         let isEmailExist = await checkExistEmail(data.email);
         if (isEmailExist) {
-            reject(`This email "${data.email}" has already exist. Please choose an other email`);
+            reject(`Αυτό το email "${data.email}" χρησιμοποιείται ήδη`);
         } else {
             // hash password
             let salt = bcrypt.genSaltSync(10);
@@ -29,7 +29,7 @@ let createNewUser = (data) => {
                         console.log(err)
                         reject(err)
                     }
-                    resolve("Create a new user successful");
+                    resolve("Ο λογαριασμός σας δημιουργήθηκε επιτυχώς");
                 }
             );
         }
