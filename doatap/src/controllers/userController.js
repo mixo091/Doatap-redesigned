@@ -44,19 +44,34 @@ let getNewRequestPage = (req, res) => {
             name: 'Νέα Αίτηση',
             url: '/user-menu/request'
         }])
+        // let newRequest = {
+        //     user_id: req.session.currentUser.user_id,
+        //     country: '',
+        //     university: '',
+        //     department: '',
+        //     title: '',
+        //     ects: '',
+        //     duration: '',
+        //     parabola_file: '',
+        //     id_file: '',
+        //     diploma_file: ''
+        // };
+
         let newRequest = {
             user_id: req.session.currentUser.user_id,
-            country: '',
-            university: '',
-            department: '',
-            title: '',
-            ects: '',
-            duration: '',
-            parabola_file: '',
-            id_file: '',
-            diploma_file: ''
+            country: req.body.country,
+            university: req.body.university,
+            department: req.body.department,
+            title: req.body.title,
+            ects: req.body.ects,
+            study_duration: req.body.duration,
+            parabola_file: req.body.parabola_file,
+            id_file: req.body.id_file,
+            diploma_file: req.body.diploma_file,
+            submitted: 0
         };
 
+        console.log(newRequest)
 
         return res.render('users/request', {
             user: req.session.currentUser,
@@ -150,31 +165,43 @@ let createNewRequest = async(req,res) => {
         department: req.body.department,
         title: req.body.title,
         ects: req.body.ects,
-        duration: req.body.duration,
+        study_duration: req.body.duration,
         parabola_file: req.body.parabolo,
         id_file: req.body.id,
-        diploma_file: req.body.diploma
+        diploma_file: req.body.diploma,
+        submitted: ''
     };
 
-    if(newRequest.user_id === '' || newRequest.country === '' || newRequest.university === '' || 
-        newRequest.department === '' || newRequest.title === '' || newRequest.ects === '' || newRequest.duration === '' ||
-        newRequest.parabola_file=== '' || newRequest.id_file === '' || newRequest.diploma_file === '' ) {
-            req.flash('errors', 'Δεν έχεις ολοκληρώσει την συμπλήρωση των πεδίων ή δεν έχεις ανεβάσει όσα αρχεία χρειάζεται. Ξαναπροσπάθησε')
-            req.flash('msg',  'Η αίτησή σου αποθηκεύτηκε προσωρινά')
-            // return res.redirect('/user-menu/request')
-            return res.render('users/request', { newRequest})
-            // return res.json(newRequest)
-            // return res.json({"status": 200, "message": "POST recieved"});
-        }
-        
-    try {
-        await userService.createNewRequest(newRequest);
+    console.log(newRequest)
+    if(newRequest.parabola_file === '' || newRequest.id_file ==='' || newRequest.diploma_file ==='') {
+        newRequest.submitted = 0
+        // update values
+        await userService.tempSave(newRequest)
 
-        return res.redirect("/user-menu/user-requests");        
-    } catch (err) {
-        req.flash("errors", err);
-        // return res.redirect("/login");
+        return res.redirect("/user-menu/request")
+
+    } else {
+        try {
+            await userService.createNewRequest(newRequest);
+
+            return res.redirect("/user-menu/user-requests");        
+        } catch (err) {
+            req.flash("errors", err);
+            // return res.redirect("/login");
+        }
     }
+
+    // if(newRequest.user_id === '' || newRequest.country === '' || newRequest.university === '' || 
+    //     newRequest.department === '' || newRequest.title === '' || newRequest.ects === '' || newRequest.duration === '' ||
+    //     newRequest.parabola_file=== '' || newRequest.id_file === '' || newRequest.diploma_file === '' ) {
+    //         req.flash('errors', 'Δεν έχεις ολοκληρώσει την συμπλήρωση των πεδίων ή δεν έχεις ανεβάσει όσα αρχεία χρειάζεται. Ξαναπροσπάθησε')
+    //         // return res.redirect('/user-menu/request')
+    //         return res.render('users/request', { newRequest})
+    //         // return res.json(newRequest)
+    //         // return res.json({"status": 200, "message": "POST recieved"});
+    //     }
+        
+    
 };
 
 let getAllRequests = async(req,res) => {    
@@ -189,7 +216,6 @@ let getAllRequests = async(req,res) => {
         
         try {
             let rows = await userService.getUserRequestsById(req.session.currentUser.user_id);
-
             const result = Object.values(JSON.parse(JSON.stringify(rows)));
 
             result.forEach(v => console.log(v.req_id)) 

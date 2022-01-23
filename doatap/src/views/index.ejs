@@ -3,117 +3,79 @@
 
 <head>
     <%- include ('partials/header.ejs') %>
-        <link rel="stylesheet" href="/css/log_in.css">
-        <link rel="stylesheet" href="/css/mainPage.css">
-        <style>
-            .alert {
-        padding: 20px;
-        background-color: green;
-        color: white;
-      }
-
-      .alert.alert-info {
-        padding: 20px;
-        background-color: blue;
-        color: white;
-      }
-
-      .closebtn {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 30px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .closebtn:hover {
-        color: black;
-      }
-        </style>
+    <link rel="stylesheet" href="/css/log_in.css">
+    <link rel="stylesheet" href="/css/mainPage.css">
 </head>
 
 <body>
-
+    <% if(success && success.length > 0){ %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><%= success %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    <!-- <div class="container">
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div> -->
     <%- include ('partials/nav-bar.ejs') %>
+    <div class="main-page ">
+    <div style="margin-bottom:3vh;font-size: 22px; font-family:'Play',sans-serif ;background-color:	#e3e3e3;padding:15px;text-align:center;">
+        <h1 class = "main-title">Aναγνώρισε τις σπουδές σου στην Ελλάδα και
+            συνέχισε την επαγγελματική σου σταδιοδρομία εδώ</h1>
+    </div>
+        <div style="overflow:auto" class="plhrofories">
+            <div class="container-title">Πληροφορίες</div>
+
+            <div class="anagnwrish-info">
+                Δικαιολογητικά,παράβολα και πληροφορίες για την αίτηση αναγνώρισης
+                <a   href="/info">Μάθε περισσότερα >></a>
+            </div>
+
+        </div>
+      
+        <div class="ta-nea-mas">
+            <div class="container-title">Τα τελευταία νέα</div>
+
+            <div class="anakoinwsh">
+                <div class="a-title">Ανακοινώση 1</div>
+                <div class="a-body">Lorem ipsum dolor sit amet, consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing elit. . </div>
+            </div>
+
+            <div class="anakoinwsh">
+                <div class="a-title">Ανακοινώση 2</div>
+                <div class="a-body">Lorem ipsum dolor sit amet, consectetur adipisicing Lorem ipsum, dolor sit amet consectetur adipisicing elit. </div>
+            </div>
+
+            <div class="anakoinwsh">
+                <div class="a-title">Ανακοινώση 3</div>
+                <div class="a-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.  </div>
+            </div>
+
+            <button class="learn-more">Περισσότερες >></button>
 
 
-        <% if(success && success.length> 0){ %>
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <span class="error-msg">
-                  <%= success %>
-                </span>
-              </div>
-            <% } %>
 
-                <div class="main-page ">
-                    <div
-                        style="font-size: 22px; font-family:'Play',sans-serif ;background-color:	#e3e3e3;padding:15px;text-align:center; height:25vh;">
-                        <h1 class="main-title">Aναγνώρισε τις σπουδές σου στην Ελλάδα και
-                            συνέχισε την επαγγελματική σου σταδιοδρομία εδώ</h1>
-                    </div>
 
-                    <div>
-                        <div class="shortcut-menu">
 
-                            <div class=" shortcut-link " style="background-color:white ; color: black;"> Πληροφορίες
-                            </div>
-                            <div class=" shortcut-link " style="background-color:rgb(173, 173, 173) ; color:black">
-                                Επικοινώνησε μαζί μας - Κλείσε ραντεβού </div>
-                            <div class=" shortcut-link " style="background-color:rgb(82, 140, 189) ;color: azure;">
-                                Εξετάσεις Οδοντιατρικής </div>
-                            <div class=" shortcut-link " style="background-color:black; color:azure;"> Τα τελευταία νέα
-                            </div>
+        </div>
+        <div class="epikoinwnia">
+            <div class="container-title">Επικοινώνησε μαζί μας</div>
 
-                        </div>
+            <div class="epikoinwnia-text"> Στοιχεία εποκοινώνιας με εμάς , Κλείσε Ραντεβού </div>
+            <a   href="/contact">Μάθε περισσότερα >></a>
 
-                        <div class="main-content ">
-                            <div class="anagnwrish">
-                                <div class="efarmogh">
-                                    Αν επιθυμείτε να υποβάλλετε αίτηση για την αναγνώριση τίτλου σπουδών σας συνδεθείτε
-                                    με τη πλατφόρμα
-                                    <button class="e-doatap-btn "><img
-                                            src="images/Logo - eDoatap Color white-lettters.png" class="logo-btn"
-                                            alt=""></button>
-                                </div>
-                                <div class="anagnwrish-info">
-                                    Δικαιολογητικά,παράβολα και πληροφορίες για την αίτηση αναγνώρισης
-                                    <a class="learn-more" href="/info">Μάθε περισσότερα >></button>
-                                </div>
-                            </div>
-                        </div>
+          
+        </div>
+      </div>
 
-                        <div class="Anouncements">
-                            <div class="Anouncements-title">Ανακοινώσεις</div>
-                            <div class="Anouncements-content">
-                                <div class="Anouncement">
-                                    <div class="a-head">ανακοίνωση 1</div>
-                                    <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Libero, provident! </div>
-                                </div>
-                                <div class="Anouncement">
-                                    <div class="a-head">ανακοίνωση 2</div>
-                                    <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Libero, provident! </div>
-                                </div>
-                                <div class="Anouncement">
-                                    <div class="a-head">ανακοίνωση 3</div>
-                                    <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Libero, provident!</div>
-                                </div>
-                                <div class="Anouncement">
-                                    <div class="a-head">ανακοίνωση 4</div>
-                                    <div class="a-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Libero, provident!</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%- include ('partials/footer.ejs') %>
+
+      
+
+    <%- include ('partials/footer.ejs') %>
 </body>
 
 </html>

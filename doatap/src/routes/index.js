@@ -20,6 +20,43 @@ router.get('/info', (req,res) => {
     res.render('info');
 });
 
+router.get('/contact', (req,res) => {
+    req.breadcrumbs({
+        name: 'contact',
+        url: '/contact'
+    })
+    res.render('contact', {
+        errors: req.flash("errors")
+    });
+});
+
+
+router.get('/info', (req,res) => {
+    req.breadcrumbs({
+        name: 'info',
+        url: '/info'
+    })
+    res.render('info', {
+        errors: req.flash("errors")
+    });
+});
+
+router.get('/contact', (req,res) => {
+
+    res.render('contact');
+});
+
+router.get('/contact', (req,res) => {
+    req.breadcrumbs({
+        name: 'contact',
+        url: '/contact'
+    })
+    res.render('contact', {
+        errors: req.flash("errors")
+    });
+});
+
+
 router.get("/login", loginController.checkLoggedOut, loginController.getPageLogin);
 router.get("/register", registerController.getPageRegister);
 router.get("/logout", loginController.postLogOut)

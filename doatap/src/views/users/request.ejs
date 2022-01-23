@@ -8,18 +8,24 @@
     <!-- <link rel="stylesheet" href="/css/request.css"> -->
     <link rel="stylesheet" href="/css/style.css">
     <style>
+
+    .form-label{
+        margin-right: 20px;
+        font-size: 18px;
+        font-family: 'Play' , sans-serif;
+      } 
+
+
       .alert {
         padding: 20px;
         background-color: red;
         color: white;
       }
-
       .alert.alert-info {
         padding: 20px;
         background-color: blue;
         color: white;
       }
-
       .closebtn {
         margin-left: 15px;
         color: white;
@@ -30,7 +36,6 @@
         cursor: pointer;
         transition: 0.3s;
       }
-
       .closebtn:hover {
         color: black;
       }
@@ -57,7 +62,7 @@
         Publish
       </a> -->
 
-          <form action="/user-menu/request" method="post" class="form">
+          <form style="width:100vh; margin-bottom: 3vh;  box-shadow: 3px 3px 3px black;padding-right:40px; padding-left: 40px; ;" action="/user-menu/request" method="post" class="form">
             <!-- Progress bar -->
             <div class="progressbar">
               <div class="progress" id="progress"></div>
@@ -95,12 +100,12 @@
               </div>
               <hr>
               <div class="btns-group">
-                <a href="#" class="btn btn-next">Next</a>
+                <a href="#" class="btn btn-next">Επόμενο</a>
                 <div class="col-12">
                   <button class="btn btn-primary" id="temp-save">Προσωρινή αποθήκευση</button>
                 </div>
                 <div class="col-10">
-                  <button type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
+                  <button style="width: 50vh; padding: 2vh; border-radius: 8px; " type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
                 </div>
               </div>
             </div>
@@ -119,12 +124,12 @@
               </div>
 
               <div class="btns-group">
-                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" style="margin-top: 5px;" class="btn btn-prev">Προηγούμενο</a>
                 <div class="col-12">
-                  <button class="btn btn-primary" id="temp-save">Προσωρινή αποθήκευση</button>
+                  <button  style="margin-top: 5px;" class="btn btn-primary" id="temp-save">Προσωρινή αποθήκευση</button>
                 </div>
                 <div class="col-10">
-                  <button type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
+                  <button style=" border-radius: 8px ;width: 50vh; padding: 2vh;" type="submit" id="final-submit" class="btn-warning btn-primary">Οριστική Υποβολή</button>
                 </div>
               </div>
             </div>
@@ -134,26 +139,20 @@
 
             <script>
               function bootstrap_alert(elem, message, timeout) {
-
                 $(elem + " .alertMessage").text(message)
                 $(elem).show().alert()
-
                 if (timeout || timeout === 0) {
                   setTimeout(function () {
                     $(elem).hide();
                   }, timeout);
                 }
               };
-
-
               const prevBtns = document.querySelectorAll(".btn-prev");
               const nextBtns = document.querySelectorAll(".btn-next");
               const progress = document.getElementById("progress");
               const formSteps = document.querySelectorAll(".form-step");
               const progressSteps = document.querySelectorAll(".progress-step");
-
               let formStepsNum = 0;
-
               nextBtns.forEach((btn) => {
                 btn.addEventListener("click", () => {
                   formStepsNum++;
@@ -161,7 +160,6 @@
                   updateProgressbar();
                 });
               });
-
               prevBtns.forEach((btn) => {
                 btn.addEventListener("click", () => {
                   formStepsNum--;
@@ -169,16 +167,13 @@
                   updateProgressbar();
                 });
               });
-
               function updateFormSteps() {
                 formSteps.forEach((formStep) => {
                   formStep.classList.contains("form-step-active") &&
                     formStep.classList.remove("form-step-active");
                 });
-
                 formSteps[formStepsNum].classList.add("form-step-active");
               }
-
               function updateProgressbar() {
                 progressSteps.forEach((progressStep, idx) => {
                   if (idx < formStepsNum + 1) {
@@ -187,13 +182,10 @@
                     progressStep.classList.remove("progress-step-active");
                   }
                 });
-
                 const progressActive = document.querySelectorAll(".progress-step-active");
-
                 progress.style.width =
                   ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
               }
-
               // temp save with localStorage
               let request = {
                 country: "",
@@ -203,48 +195,35 @@
                 ects: "",
                 duration: ""
               }
-
               const countryId = document.getElementById("country")
               const universityId = document.getElementById("university")
               const departmentId = document.getElementById("department")
               const titleId = document.getElementById("title")
               const ectsId = document.getElementById("ects")
               const durationId = document.getElementById("duration")
-
               const tempSave = document.getElementById("temp-save")
-
               tempSave.onclick = function () {
                 event.preventDefault()
-
                 const countryValue = countryId.value;
                 const universityValue = universityId.value;
                 const departmentValue = departmentId.value;
                 const titleValue = titleId.value;
                 const ectsValue = ectsId.value;
                 const durationValue = durationId.value;
-
                 request.country = countryValue
                 request.university = universityValue
                 request.department = departmentValue
                 request.title = titleValue
                 request.ects = ectsValue
                 request.duration = durationValue
-
                 localStorage.setItem('req', request);
-
-
                 bootstrap_alert('#alertBox', 'Η αίτησή σου αποθηκεύτηκε προσωρινά. Για να ολοκληρώσεις την αίτηση επισύναψε όλα τα απαραίτητα έγγραφα στο επόμενο βήμα.', 10000)
               };
-
               window.onload = function () {
-
                 let profile = localStorage.getItem('request')
                 let profileObj = JSON.parse(profile)
-
                 console.log(profileObj)
-
                 if (profileObj !== null) {
-
                   if (profileObj.country != "") $('#country').val(profileObj.country);
                   if (profileObj.university != "") $('#university').val(profileObj.university);
                   if (profileObj.department != "") $('#department').val(profileObj.department);
@@ -253,7 +232,6 @@
                   if (profileObj.duration != "") $('#duration').val(profileObj.duration);
                 }
               }
-
               // const finalSubmit = document.getElementById('final-submit');
               // finalSubmit.onclick = function () {
               //   localStorage.clear()

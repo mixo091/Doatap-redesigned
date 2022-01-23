@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('partials/header.ejs') %>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+    .epikoinwnia-title{
+        font-family: 'Play' ,sans-serif;
+        font-size: 24px;
+        padding: 10px;
+        text-align: center;
+        border-bottom: solid 0.1rem black;
+        color: black;
+        width: 60vh;
+      
+       
+    }
+
+    .epikoinwnia{
+        height: 80vh;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+      
+        
+    }
+
+    .athina{
+        padding: 5vh;
+        text-align: center;
+        width: 100%;
+
+    }
+
+    .sk{
+        padding: 5vh;
+        text-align: center;
+        width: 100%;
+        
+    }
+
+    .topothesia{
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .topotheshia-info{
+        font-size: 22px;
+        font-family: 'Play' , sans-serif;
+    }
+    
+    .t-info{
+        font-size: 18px;
+        margin-top: 3vh;
+        font-family: 'Play' , sans-serif;
+        text-align: center;
+    }
+
+    @media only screen and (max-width: 900px) {
+    .epikoinwnia{
+        height: 120vh;
+        }
+      
+    }
+
+    @media only screen and (max-width: 700px) {
+
+        .epikoinwnia{
+        height: 150vh;
+        }
+    }
+
+
+    @media only screen and (max-width: 495px) {
+
+        .epikoinwnia{
+        height: 200vh;
+        }
+    }
+    </style>
+
+</head>
+<body>
+<%- include ('partials/nav-bar.ejs') %>
+<%- include ('partials/breadcrumbs.ejs') %>
+
+
+<div class="epikoinwnia">
+
+    <div class="epikoinwnia-title">
+        Επικοινώνησε μαζί μας
+    </div>
+
+    <div class="athina"> 
+
+        <div class="topothesia">Παράρτημα Αθήνας</div>
+        <div class="topotheshia-info">Διεύθυνση: Αγ. Κωνσταντίνου 54, Τ.Κ. 104 37, Αθήνα</div>
+
+        <div class="t-info">
+            Το Πρωτόκολλο του ΔΟΑΤΑΠ δέχεται έγγραφα ΜΟΝΟ δια ηλεκτρονικού ταχυδρομείου (protocol@doatap.gr), ΕΛΤΑ και ταχυμεταφορών.
+Οι πολίτες μπορούν να επικοινωνούν για πληροφόρηση μέσω ηλεκτρονικού ταχυδρομείου (information_dep@doatap.gr).
+Τηλεφωνική εξυπηρέτηση του κοινού πραγματοποιείται καλώντας τον αριθμό 210-5281000 από Δευτέρα έως Παρασκευή, ώρες 12:30-14:00.
+Η δια ζώσης εξυπηρέτηση του κοινού πραγματοποιείται από Δευτέρα έως Πέμπτη και ώρες 9:00-12:00. Προς ανάσχεση της διασποράς του ιού, η δια ζώσης εξυπηρέτηση από υπαλλήλους περιορίζεται στο κοινό που προσέρχεται για να παραλάβει έγγραφα. Το κοινό που προσέρχεται για ενημέρωση εξυπηρετείται από υπαλλήλους τηλεφωνικά από την είσοδο του κτιρίου.
+Η ενημέρωση για τη πορεία των ηλεκτρονικών αιτημάτων αναγνώρισης τίτλων σπουδών πραγματοποιείται αποκλειστικά από τη πλατφόρμα e-doatap.doatap.gr. Για τη πορεία έγχαρτων αιτήσεων αναγνώρισης τίτλων σπουδών που έχουν υποβληθεί πριν τις 20-5-2019, ενημερωθείτε εδώ («ONLINE πορεία αίτησης»).
+Τα αιτήματα των φορέων για επαλήθευση γνησιότητας αποστέλλονται μέσω ηλεκτρονικού ταχυδρομείου στη διεύθυνση gnisiotita@doatap.gr
+
+        </div>
+    </div>
+
+    <div class="sk">
+
+        <div class="topothesia">Παράρτημα Θεσσαλονίκη</div>
+        <div class="topotheshia-info">Διεύθυνση: Υπουργείο Μακεδονίας Θράκης – Διοικητήριο, 541 23 Θεσσαλονίκη</div>
+
+        <div class="t-info">Τηλεφωνική εξυπηρέτηση: 2313-501372 ή 3, 2313-501106, 2313-501315.</div>
+
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>
+
+
+</body>
+</html>

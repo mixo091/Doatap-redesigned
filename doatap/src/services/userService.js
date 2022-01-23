@@ -95,9 +95,53 @@ let uploadFiles = (data, id) => {
 };
 
 
+let tempSave = (data) => {
+    return new Promise(async (resolve, reject) => {
+
+        console.log(data)
+        DBConnection.query('SELECT * FROM requests WHERE user_id = ?', data.user_id, 
+        function(err, rows) {
+            if (err) {
+                console.log(err)
+                reject(false)
+            }
+            console.log(rows)
+            if(rows[0] > 0) {
+                DBConnection.query(
+                    ' UPDATE requests set country = ?, university = ?, department = ?, title = ?, ects = ?, study_duration = ?', 
+                    [ data.country, data.university, data.department, data.title, data.ects, data.duration],
+                    function(err, rows) {
+                        if (err) {
+                            console.log(err)
+                            reject(false)
+                        }
+                        console.log(rows)
+                        resolve(rows)
+                        // resolve("Create a new request successful");
+                    }
+            )} else {
+                DBConnection.query(
+                    ' INSERT INTO requests set ?', data, function(err, rows) {
+                        if (err) {
+                            console.log(err)
+                            reject(false)
+                        }
+                        console.log(rows)
+                        resolve(rows)
+                        // resolve("Create a new request successful");
+                    }
+            )
+            }
+        }
+        );
+    });
+};
+
+
 module.exports = {
     createNewRequest: createNewRequest,
     getUserRequestsById: getUserRequestsById,
     getAllUsersRequests: getAllUsersRequests,
-    uploadFiles: uploadFiles
+    uploadFiles: uploadFiles,
+    tempSave: tempSave
 };

@@ -2,30 +2,100 @@
 <html>
 
 <head>
-  <%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/header.ejs') %>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+    .field{
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      margin-bottom: 5px;   
+    }
+
+    .aithseis{
+      display: inline-flex;
+      width: 100%;
+    ;
+      
+    }
+
+    .aithsh{
+      padding: 20px;
+      margin-bottom: 2vh;
+      box-shadow: 4px 4px 4px rgb(5, 211, 16);
+      border-radius: 8px;
+      align-items:center;
+      width:40%;
+      display: inline-block;
+      margin-left: 5%;
+      margin-top: 25px;
+      background-color: rgb(248, 248, 248);
+       }
+
+    .label{
+      font-family: 'Play' ,sans-serif;
+      font-size: 18px;
+      padding: 6px;
+      border-radius: 6px;
+
+    }
+
+    .data{
+      font-family: 'Play' ,sans-serif;
+      font-size: 18px;
+      margin-left: 10px;
+      color:rgb(4, 76, 143);
+      padding: 6px;
+      border-radius: 6px;
+
+     
+    }
+
+    .oi-aithseis-mou{
+      text-align: center;
+      font-family: 'Play' ,sans-serif;
+      margin: 5vh;
+      font-size: 24px;
+      font-weight: bold;
+    }
+ 
+   </style>
 </head>
 
-<body>
-  <%- include ('../partials/nav-bar.ejs') %>
-    <%- include ('../partials/breadcrumbs.ejs') %>
-      
-      <div class="container top-padding bottom-padding">
-        <ul>
-          <% result.forEach(function(item) { %>
-            <li>
-              <%= item.req_id %>
-            </li>
-            <li>
-              <%= item.country %>
-            </li>
-            <li>
-              <%= item.university %>
-            </li>
-            <% })%>
-        </ul>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="js/nav-script.js"></script>
+
+
+<body style="background-color:#e3e3e3;">
+    <%- include ('../partials/nav-bar.ejs') %>
+        <%- include ('../partials/breadcrumbs.ejs') %>
+
+            <div class="oi-aithseis-mou"> Οι Aιτήσεις μου</div>
+
+            <div class=" aithseis request-container  top-padding bottom-padding " >
+              <ul  >
+                
+                <% result.forEach(function(item) { %>
+                  <div class="aithsh"  >  
+                  <li class="field"><div class="label">Αριθμός πρωτοκόλλου : </div> <div class="data "><%= item.req_id %></div></li>
+                  <li class="field"><div class="label">Χώρα : </div> <div class="data "><%= item.country %></div></li> 
+                  <li class="field"><div class="label">Πανεμιστήμιο : </div> <div class="data "><%= item.university %></div></li>
+                  <li class="field"><div class="label">Τμήμα: </div> <div class="data "><%= item.department%></div></li>
+                  <li class="field"><div class="label">Τίτλος: </div> <div class="data "><%= item.title%></div></li>
+                  <li class="field"><div class="label">Διάρκεια: </div> <div class="data "><%= item.study_duration %></div></li>
+                  <li class="field"><div class="label">Πιστωτικές Μονάδες : </div> <div class="data "><%= item.ects %></div></li>
+                  <li class="field"><div class="label">Παράβολα : </div> <div class="data "><%= item.parabola_file %></div></li>
+                  <li class="field"><div class="label">Δικαιολογητικά : </div> <div class="data "><%= item.id_file %></div></li>
+                  <li class="field"><div class="label">Κατάσταση Αίτησης : </div> <div class="data ">Accepted  <div style="display :inline-block ;width: 12px; height: 12px; border-radius: 100%; background-color: rgb(17, 209, 17);"></div></div></li>
+
+                  </div>
+                <% })%>
+              </ul>  
+            </div>
+            <%- include ('../partials/footer.ejs') %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="js/nav-script.js"></script>
+            
 </body>
 
 </html>

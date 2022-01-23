@@ -12,7 +12,7 @@ body{
 
 .container1{
     width: 100vw;
-    height: 75vh;
+    height: 90vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
@@ -40,7 +40,9 @@ body{
 
 form{
 	width: 400px;
-	background-color: rgb(38, 38, 41);
+	-webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: #d4d4d4;
     padding: 40px;
     border-radius: 16px;
 	box-shadow: 10px 10px 10px rgb(31, 41, 48);
@@ -52,8 +54,8 @@ form{
 
 .login-content h2{
 	margin: 15px 0;
-	color: rgb(255, 255, 255);
-	font-size: 2.3rem;
+	color: rgb(31, 41, 48);
+	font-size: 2.0rem;
 	font-weight:400;
 	font-style: italic;
 }
@@ -64,7 +66,7 @@ form{
     grid-template-columns: 7% 93%;
     margin: 25px 0;
     padding: 5px 0;
-    border-bottom: 2px solid #d9d9d9;
+    border-bottom: 2px solid #6b6b6b;
 }
 
 .login-content .input-div.one{
@@ -92,7 +94,7 @@ form{
 	left: 10px;
 	top: 50%;
 	transform: translateY(-50%);
-	color: rgb(247, 247, 247);
+	color: rgb(37, 37, 37);
 	font-size: 18px;
 	transition: .3s;
 }
@@ -139,7 +141,7 @@ form{
 	background: none;
 	padding: 0.5rem 0.7rem;
 	font-size: 1.2rem;
-	color: rgb(255, 255, 255);
+	color: rgb(26, 26, 26);
 	font-family: 'poppins', sans-serif;
 }
 
@@ -197,7 +199,7 @@ a:hover{
 	cursor: pointer;
 	transition: .5s;
 	background-image:none;
-	background-color: green;
+	background-color: rgb(0, 255, 0);
 }
 
 /* .register{

@@ -118,17 +118,17 @@ CREATE TABLE `requests` (
   `study_duration` int NOT NULL,
   `parabola_file` varchar(255) NOT NULL,
   `id_file` varchar(200) NOT NULL,
-  `diploma_file` varchar(200) NOT NULL
+  `diploma_file` varchar(200) NOT NULL,
+  `submitted` tinyint(1) DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Άδειασμα δεδομένων του πίνακα `requests`
 --
 
-INSERT INTO `requests` (`req_id`, `user_id`, `country`, `university`, `department`, `title`, `ects`, `study_duration`, `parabola_file`, `id_file`, `diploma_file`) VALUES
-(44, 8, 'ellada', 'ekpa', NULL, 'basiko', 0, 0, '', 'Logo-EL-Color-Light.png', 'Logo-EL-Color-Light.png'),
-(45, 8, 'ellada', 'ekpa', 'pliroforikis', 'basiko', 222, 5, 'Logo-EL-Color-Light.png', '271546352_347309683613692_4088281220129367786_n.jpg', '270186323_1839202442947566_6655592817126308147_n.jpg');
-
+INSERT INTO `requests` (`req_id`, `user_id`, `country`, `university`, `department`, `title`, `ects`, `study_duration`, `parabola_file`, `id_file`, `diploma_file`, `submitted`) VALUES
+(45, 8, 'ellada', 'ekpa', 'pliroforikis', 'basiko', 222, 5, 'Logo-EL-Color-Light.png', '271546352_347309683613692_4088281220129367786_n.jpg', '270186323_1839202442947566_6655592817126308147_n.jpg','1');
 --
 -- Ευρετήρια για άχρηστους πίνακες
 --
